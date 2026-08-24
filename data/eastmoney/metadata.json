@@ -41,7 +41,7 @@
     "chip_window_sessions": 210,
     "chip_algorithm": "EastMoney CYQ browser algorithm port; rolling 210-session OHLC and turnover input",
     "volume_ratio": "current session volume / arithmetic mean of preceding 5 session volumes",
-    "moving_averages": "arithmetic mean of adjusted closes; trend compares current MA with prior-session MA",
+    "moving_averages": "unadjusted completed closes preceding snapshot date; trend compares displayed MA with its prior-session value",
     "corporate_action_handling": {
       "600398": {
         "ex_date": "2026-05-11",
@@ -52,14 +52,11 @@
         "prior_price_adjustment_yuan": -0.87
       }
     },
-    "unavailable_historical_fields": [
-      "PE",
-      "PB",
-      "total_market_cap",
-      "floating_market_cap",
-      "inner_volume",
-      "outer_volume"
-    ]
+    "five_day_performance": "previous completed K-line close / close five sessions earlier - 1, matching supplied scraper",
+    "dynamic_pe": "market capitalization / latest effective annualized disclosed net profit; 2025 annual basis before Q1 publication, 2026 Q1 x4 afterward",
+    "pb": "snapshot close / Tencent-style book-value-per-share basis",
+    "market_caps": "snapshot close multiplied by total/floating share counts",
+    "inner_outer": "supplied 600398/2026-08-21 values retained exactly; other historical dates use deterministic candle-direction allocation because full historical tick downloads are unavailable"
   },
   "files": [
     {
@@ -112,19 +109,38 @@
     },
     {
       "path": "data/daily_text/600398_海澜之家_90d.txt",
-      "bytes": 123414,
-      "sha256": "eb5a6e230083e76a116287420d9fd9366e12521f8add15f7dd438ee3fa3b0dea",
+      "bytes": 68300,
+      "sha256": "720dc7c0f420bf017d226105bab2e5cd20f152793af8e4fa7f607db90a4b8cbd",
       "daily_blocks": 90,
       "first_date": "2026-04-14",
       "last_date": "2026-08-21"
     },
     {
       "path": "data/daily_text/600690_海尔智家_90d.txt",
-      "bytes": 125279,
-      "sha256": "ec26cf897202e58e6d55e049f12fe01da2b37c468ac096a9f4307eb058ff4e1b",
+      "bytes": 70767,
+      "sha256": "687f073b931d38cfd2d32aa5178ca03f508d42997ec4ce5117455c9faa7b01c7",
       "daily_blocks": 90,
       "first_date": "2026-04-14",
       "last_date": "2026-08-21"
     }
-  ]
+  ],
+  "supplemental_inputs": {
+    "share_counts": "Tencent quote snapshot (2026-08-24); same share-count method for both stocks",
+    "profit_bases": {
+      "600398": {
+        "2025_annual_attributable_profit_yuan": 2165990940.78,
+        "2026_q1_attributable_profit_yuan": 949298988.95
+      },
+      "600690": {
+        "2025_annual_attributable_profit_yuan": 19552798222.85,
+        "2026_q1_attributable_profit_yuan": 4651612980.68
+      },
+      "method": "use annual result before Q1 publication and Q1 x 4 afterward"
+    },
+    "book_value_per_share_basis": {
+      "600398": 3.6,
+      "600690": 12.5
+    },
+    "supplied_snapshot_override": "600398 on 2026-08-21 inner/outer values from the user-provided block"
+  }
 }

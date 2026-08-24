@@ -80,27 +80,78 @@ class DataValidationTests(unittest.TestCase):
             )
             self.assertEqual(wanted, tuple(round(value, 2) for value in actual))
 
-    def test_text_outputs_have_90_complete_blocks(self) -> None:
+    def test_text_outputs_have_90_exactly_formatted_blocks(self) -> None:
         required = (
-            "【价格行情】",
-            "【成交与估值】",
-            "【筹码分布】",
-            "【5 日表现】",
-            "【移动平均线】",
-            "获利比例：",
-            "90% 成本区间：",
-            "MA90：",
+            "股票数据： ",
+            "今开: ",
+            "涨停价: ",
+            "动态市盈率: ",
+            "总市值: ",
+            "内盘: ",
+            "外盘: ",
+            "获利比例:\t",
+            "90%成本:\t",
+            "70%成本:\t",
+            "5日涨幅: ",
+            "MA90: ",
         )
         for stock in GENERATOR.STOCKS:
             text = (
                 GENERATOR.OUTPUT / f"{stock.stem}_90d.txt"
             ).read_text(encoding="utf-8")
-            self.assertEqual(90, text.count("\n日期："))
-            self.assertEqual(90, text.count("股票代码：" + stock.code))
+            self.assertEqual(90, text.count("Date: "))
+            self.assertEqual(90, text.count(f"股票数据： {stock.name} {stock.code}"))
             for marker in required:
                 self.assertEqual(90, text.count(marker), marker)
+            for period in (5, 10, 20, 30, 40, 50, 60, 70, 80, 90):
+                self.assertEqual(90, text.count(f"MA{period}: "), f"MA{period}")
+            self.assertNotIn("N/A", text)
             self.assertNotIn("nan", text.lower())
             self.assertNotIn("none", text.lower())
+
+    def test_supplied_2026_08_21_block(self) -> None:
+        text = (GENERATOR.OUTPUT / "600398_海澜之家_90d.txt").read_text(
+            encoding="utf-8"
+        )
+        block = text[text.index("Date: 2026-08-21") :].strip()
+        expected = """Date: 2026-08-21
+
+股票数据： 海澜之家 600398 20260821
+
+5.90
+
+-0.11  -1.83%
+
+今开: 6.01\t昨收: 6.01\t最高价: 6.02\t最低价: 5.87
+
+涨停价: 6.61\t跌停价: 5.41\t换手率: 0.42%\t量比: 0.76
+
+成交量: 20.08万\t成交额: 1.19亿\t动态市盈率: 7.46\t市净率: 1.64
+
+总市值: 283亿\t流通市值: 283亿\t振幅: 2.50%\t内盘: 10.87万
+
+外盘: 9.21万
+
+日期:\t2026-08-21
+
+获利比例:\t50.45%
+
+50.45%\t49.55%
+
+平均成本:\t5.90
+
+90%成本:\t5.52-6.24
+
+集中度:\t6.12%
+
+70%成本:\t5.69-6.14
+
+集中度:\t3.80%
+
+5日涨幅: 0.33%
+
+MA5: 5.94 (上升), MA10: 6.00 (下降), MA20: 6.07 (上升), MA30: 6.00 (上升), MA40: 5.87 (上升), MA50: 5.83 (上升), MA60: 5.82 (上升), MA70: 5.83 (下降), MA80: 5.91 (下降), MA90: 5.98 (下降)"""
+        self.assertEqual(expected, block)
 
     def test_metadata_hashes(self) -> None:
         metadata = json.loads(
