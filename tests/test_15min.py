@@ -20,6 +20,12 @@ SPEC.loader.exec_module(ANALYZER)
 
 
 class FifteenMinuteValidationTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.metadata = json.loads(
+            (ANALYZER.DEFAULT_OUTPUT / "metadata.json").read_text(encoding="utf-8")
+        )
+
     def test_all_stocks_have_complete_21_session_bars(self) -> None:
         self.assertEqual(14, len(ANALYZER.STOCKS))
         for stock in ANALYZER.STOCKS:
@@ -32,8 +38,8 @@ class FifteenMinuteValidationTests(unittest.TestCase):
             self.assertEqual(21, len(counts), stock.code)
             self.assertEqual({16}, set(counts.values()), stock.code)
             dates = sorted(counts)
-            self.assertEqual("2026-07-27", dates[0])
-            self.assertEqual("2026-08-24", dates[-1])
+            self.assertEqual(self.metadata["first_session"], dates[0])
+            self.assertEqual(self.metadata["latest_session"], dates[-1])
             for date in dates:
                 day = [row for row in rows if row["date"] == date]
                 self.assertEqual(list(range(16)), [int(row["slot_idx"]) for row in day])
@@ -55,7 +61,8 @@ class FifteenMinuteValidationTests(unittest.TestCase):
             ) as handle:
                 summaries = list(csv.DictReader(handle))
             self.assertEqual(21, len(summaries))
-            self.assertEqual("2026-08-24", summaries[-1]["date"])
+            latest = self.metadata["latest_session"]
+            self.assertEqual(latest, summaries[-1]["date"])
             report = (directory / f"{stock.code}_15min_分析报告.txt").read_text(
                 encoding="utf-8"
             )
@@ -69,14 +76,13 @@ class FifteenMinuteValidationTests(unittest.TestCase):
             self.assertIn("[下午 13:00-15:00]", report)
             self.assertIn("[异动预警汇总]", report)
             self.assertIn("异动预警", alerts)
-            self.assertIn("[最新交易日速报：2026-08-24]", guide)
+            self.assertIn(f"[最新交易日速报：{latest}]", guide)
             self.assertIn("不构成投资建议", guide)
 
     def test_metadata_covers_and_hashes_all_outputs(self) -> None:
-        metadata_path = ANALYZER.DEFAULT_OUTPUT / "metadata.json"
-        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        metadata = self.metadata
         self.assertEqual(21, metadata["sessions"])
-        self.assertEqual("2026-08-24", metadata["latest_session"])
+        self.assertLess(metadata["first_session"], metadata["latest_session"])
         self.assertEqual(70, len(metadata["files"]))
         expected = {
             path.relative_to(ROOT).as_posix()

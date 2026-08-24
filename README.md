@@ -143,7 +143,7 @@ data/eastmoney/<代码>_<名称>_volume_warmup_5d.csv
 
 ## 15 分钟成交量异动分析
 
-14 只股票均保存 **20 个历史交易日 + 最新完整交易日**，当前固定区间为 **2026-07-27 至 2026-08-24**。每个交易日含 16 根 15 分钟 K 线，每只股票共 336 行。
+14 只股票均滚动保存 **20 个历史交易日 + 最新完整交易日**。每个交易日含 16 根 15 分钟 K 线，每只股票始终保留 336 行；仓库初始区间为 **2026-07-27 至 2026-08-24**，自动任务会随交易日向前滚动。
 
 数据统一来自新浪 `CN_MarketDataService.getKLineData` 15 分钟接口：
 
@@ -182,6 +182,20 @@ python scripts/analyze_15min_volume.py
 ```bash
 python scripts/analyze_15min_volume.py --source-json-dir /path/to/cached-json
 ```
+
+### GitHub Actions 自动更新
+
+工作流 [`.github/workflows/update-15min.yml`](.github/workflows/update-15min.yml) 在每周一至周五的北京时间/香港时间 **15:01** 自动启动（GitHub cron 为 `07:01 UTC`），也可在 Actions 页面手动运行。
+
+自动任务将：
+
+1. 抓取全部 14 只股票的最新数据并重新生成分析；
+2. 最多重试 5 次，等待 15:00 最后一根 K 线完整发布；
+3. 确认当天每只股票均有完整的 16 根 K 线；
+4. 运行全部仓库测试；
+5. 仅在数据发生变化时，由 `github-actions[bot]` 提交并推送 `data/15min/`。
+
+遇到周内休市日或当天完整数据尚未发布时，任务不会把部分数据写入仓库。
 
 ## 重新生成日线数据
 
