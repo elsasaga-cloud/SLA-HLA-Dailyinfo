@@ -7,6 +7,50 @@
       "name": "五粮液"
     },
     {
+      "code": "601600",
+      "name": "中国铝业"
+    },
+    {
+      "code": "601988",
+      "name": "中国银行"
+    },
+    {
+      "code": "600863",
+      "name": "华能蒙电"
+    },
+    {
+      "code": "601138",
+      "name": "工业富联"
+    },
+    {
+      "code": "000651",
+      "name": "格力电器"
+    },
+    {
+      "code": "300124",
+      "name": "汇川技术"
+    },
+    {
+      "code": "600362",
+      "name": "江西铜业"
+    },
+    {
+      "code": "601899",
+      "name": "紫金矿业"
+    },
+    {
+      "code": "300760",
+      "name": "迈瑞医疗"
+    },
+    {
+      "code": "002352",
+      "name": "顺丰控股"
+    },
+    {
+      "code": "000807",
+      "name": "云铝股份"
+    },
+    {
       "code": "600398",
       "name": "海澜之家"
     },
@@ -68,15 +112,74 @@
           "ex_date": "2026-07-16",
           "prior_price_adjustment_yuan": -2.5779999
         }
-      ]
+      ],
+      "601600": "no explicit corporate-action adjustment configured",
+      "601988": "no explicit corporate-action adjustment configured",
+      "600863": "no explicit corporate-action adjustment configured",
+      "601138": "no explicit corporate-action adjustment configured",
+      "000651": "no explicit corporate-action adjustment configured",
+      "300124": "no explicit corporate-action adjustment configured",
+      "600362": "no explicit corporate-action adjustment configured",
+      "601899": "no explicit corporate-action adjustment configured",
+      "300760": "no explicit corporate-action adjustment configured",
+      "002352": "no explicit corporate-action adjustment configured",
+      "000807": "no explicit corporate-action adjustment configured"
     },
     "five_day_performance": "previous completed K-line close / close five sessions earlier - 1, matching supplied scraper",
-    "dynamic_pe": "market capitalization / latest effective annualized disclosed net profit; latest disclosed annual basis before Q1 publication, 2026 Q1 x4 afterward",
+    "dynamic_pe": "market capitalization / configured annualized attributable-profit basis; original three use date-effective reports, added eleven use the Tencent 2026-08-24 dynamic-PE snapshot implied basis",
     "pb": "snapshot close / Tencent-style book-value-per-share basis",
     "market_caps": "snapshot close multiplied by total/floating share counts",
     "inner_outer": "supplied 600398/2026-08-21 values retained exactly; other historical dates use deterministic candle-direction allocation because full historical tick downloads are unavailable"
   },
   "files": [
+    {
+      "path": "data/eastmoney/000651_格力电器_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "c2d8a539d0f83097b58df569110fa9aa8376c6c8802f31b9bfde808485b8a013",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/000651_格力电器_kline_90d.csv",
+      "bytes": 7037,
+      "sha256": "9bc9ffc785cf1191d375c36ca55eb8938cf8a2c181605f7f589e76206ba3f853",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/000651_格力电器_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "bf49555069ff7eb774439345d26be4484f701b78d12631d1ba43337b6138a641",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/000807_云铝股份_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "4669ca7f0defeb9031e4609111117bc028dff38848d1839f6f2e5a1c86edef14",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/000807_云铝股份_kline_90d.csv",
+      "bytes": 7068,
+      "sha256": "3860e5c9562bc5b9b587a80a22647c734f9460b45c3ecf3ff8388141194728d7",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/000807_云铝股份_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "b32dae01118333477912595644b407e7ec6929639f5565612bba048d723f042f",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
     {
       "path": "data/eastmoney/000858_五粮液_chip_warmup_209d.csv",
       "bytes": 9239,
@@ -97,6 +200,102 @@
       "path": "data/eastmoney/000858_五粮液_volume_warmup_5d.csv",
       "bytes": 104,
       "sha256": "adaee1588443ceea53ccac26bb3558d6d903a1e1d91ce14e0b1312b4b1ed6ba0",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/002352_顺丰控股_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "a3ed74fe6dc2c5d761d07b3953e7cc7727396f68afe26c6d96a0175dc66084db",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/002352_顺丰控股_kline_90d.csv",
+      "bytes": 6976,
+      "sha256": "34d632c10d342ddb00ffb421d1be0eb95b4d7add31f7603525cb03cd27d833e8",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/002352_顺丰控股_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "da1db79cefd7a40c6e0865efa18616e019b5b72fa7f9ea97462383a4e7ffeaa5",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/300124_汇川技术_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "698bee38497c6775499891326536696d372014d1208a8b991630c905e9d1cafa",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/300124_汇川技术_kline_90d.csv",
+      "bytes": 7035,
+      "sha256": "e7ad2614cf19697a165143ca1264cc975493fd5d600d89bd49dd276274d15a3e",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/300124_汇川技术_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "3e8fb0fbe125e54ab139321d5a4535d74a1c0b9d0ccfb725e88539e130dd4a54",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/300760_迈瑞医疗_chip_warmup_209d.csv",
+      "bytes": 9239,
+      "sha256": "a80185d25cdae52b7710d20d950eff30d254558eac322280bdb00a7796bbd520",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/300760_迈瑞医疗_kline_90d.csv",
+      "bytes": 7334,
+      "sha256": "f50f7ad3bd4f621ad75eaf941da960863fe7d3bac709893998fde15ba04cc22d",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/300760_迈瑞医疗_volume_warmup_5d.csv",
+      "bytes": 103,
+      "sha256": "45003b8a0184f6cbfafc52cd79732911ce6d51d9dd2ffd9f2aff7c36df31070c",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/600362_江西铜业_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "966f01b7a94dafc78da027332396cbb0a807422082ae7f4e4cf803c40c8e05c1",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/600362_江西铜业_kline_90d.csv",
+      "bytes": 7050,
+      "sha256": "3b375b9bd1a4206c78d5d6363355767f20f6a25eba29f5ab6c062dd65a756fc5",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/600362_江西铜业_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "c2dac59daba9dcc3966d67fd3582eac5af487b02a58e1d2fb2eb2646e3ad0f9b",
       "rows": 5,
       "first_date": "2026-04-07",
       "last_date": "2026-04-13"
@@ -150,9 +349,177 @@
       "last_date": "2026-04-13"
     },
     {
+      "path": "data/eastmoney/600863_华能蒙电_chip_warmup_209d.csv",
+      "bytes": 7567,
+      "sha256": "4cb76567c75cdf71f6ab1c568fe8e6aa0511461f0333694b63c843f6dbc4d3d8",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/600863_华能蒙电_kline_90d.csv",
+      "bytes": 6725,
+      "sha256": "fd37593675260483449caca7a523f5c3ff724b55afa89b86d8cd4d78b5628d83",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/600863_华能蒙电_volume_warmup_5d.csv",
+      "bytes": 109,
+      "sha256": "01af2485df0294fe1d039b3e22beab6f5eccebc9d9811ffc278d672f322af6df",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/601138_工业富联_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "885c574344d7d7b944883c554139445aca4cf7f727e8fa534f62efd847b9634c",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/601138_工业富联_kline_90d.csv",
+      "bytes": 7189,
+      "sha256": "d8e1bfa03386e9e5dd886d1da5925e0cc693e787c357d5c47016002ea2fc9b7d",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/601138_工业富联_volume_warmup_5d.csv",
+      "bytes": 112,
+      "sha256": "f648f84fdd7fd9f9b7f4d73e3973839229b31fabe58180f6261a3941374241d0",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/601600_中国铝业_chip_warmup_209d.csv",
+      "bytes": 7991,
+      "sha256": "6c7aa0ffc05de59984559c529d6ef1988c565b5b92d11d2d250d47031ec433c5",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/601600_中国铝业_kline_90d.csv",
+      "bytes": 6958,
+      "sha256": "da2670bdc3013eca59dcb7d43c8176d2f7b7cd74f9c53df512b0a43979b03f12",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/601600_中国铝业_volume_warmup_5d.csv",
+      "bytes": 112,
+      "sha256": "6b944b8a35b86d5db4f41c0fbc0b7cf959b9c7ca5cab2332860a57d26b330771",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/601899_紫金矿业_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "406cf281d533b885461a436807369ed7c94e006a65687d17f4258a86ce5db7b4",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/601899_紫金矿业_kline_90d.csv",
+      "bytes": 7160,
+      "sha256": "1bde9ee175acdc00776c96e21a788a648e7123c5b9709a494d9cea72f9a808b4",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/601899_紫金矿业_volume_warmup_5d.csv",
+      "bytes": 112,
+      "sha256": "c87f486d88817dd0d47385bd1eaa54d73f0e97661a43ddfb3594776772c63631",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/601988_中国银行_chip_warmup_209d.csv",
+      "bytes": 7567,
+      "sha256": "d4b72acd7a7fe1231a8259f7d6712e045d2b455d63bbd8261bb6f2d959b1ad53",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/601988_中国银行_kline_90d.csv",
+      "bytes": 6754,
+      "sha256": "3d3a7456e1ea7f76fd99bfe131519a3588966fa1823f27636cf54b00a48c249d",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/601988_中国银行_volume_warmup_5d.csv",
+      "bytes": 112,
+      "sha256": "e26b105be6666d2a8974d6eb9d3e0d54ab2be3792ddd2ee4f80873a6618ddd6d",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/daily_text/000651_格力电器_90d.txt",
+      "bytes": 70601,
+      "sha256": "6d95bb31ff59dcf57198f068676284bed24e043f032372c5f2659065967eb86d",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/daily_text/000807_云铝股份_90d.txt",
+      "bytes": 70665,
+      "sha256": "0d32c350be51147307dc58ed39481eceeecb4c12850eb96847a60a98ebc56489",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
       "path": "data/daily_text/000858_五粮液_90d.txt",
       "bytes": 70999,
       "sha256": "0b10cb8586564b3a75f71ad8240a6a74b8a156ac9a58dd05f05e01da02321031",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/daily_text/002352_顺丰控股_90d.txt",
+      "bytes": 70557,
+      "sha256": "c1a0ce9901bdcd56669d1e47f38fec4d1e494d8a57c3d7a85e40d1bc037d39c8",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/daily_text/300124_汇川技术_90d.txt",
+      "bytes": 70744,
+      "sha256": "588347bede73bb12a0cff9f360f428c17456331970cfda4a4036d7d066baa3d7",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/daily_text/300760_迈瑞医疗_90d.txt",
+      "bytes": 72539,
+      "sha256": "c39a835a364bac32fdc2273bf22cbe67f439d505fdac478544d30b51bfb1c0c9",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/daily_text/600362_江西铜业_90d.txt",
+      "bytes": 70782,
+      "sha256": "668f9d5a1024e2cc7fd6d8f850afff56a7dfce364af46086fe633c78b47abea7",
       "daily_blocks": 90,
       "first_date": "2026-04-14",
       "last_date": "2026-08-21"
@@ -172,10 +539,50 @@
       "daily_blocks": 90,
       "first_date": "2026-04-14",
       "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/daily_text/600863_华能蒙电_90d.txt",
+      "bytes": 68817,
+      "sha256": "f1771ae869fc413bd6e801b6c624cae9af31755f812edbf2aaa2f40b2565dabb",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/daily_text/601138_工业富联_90d.txt",
+      "bytes": 71283,
+      "sha256": "8d27824d5eb356ea1f8ac799acb663d62d670f51e9dbe886cc9b10d80be4d6f4",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/daily_text/601600_中国铝业_90d.txt",
+      "bytes": 70326,
+      "sha256": "73e7a88f12e384f4244feb46254331a4cf6c78a5c45df39455f31910fcf4f68c",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/daily_text/601899_紫金矿业_90d.txt",
+      "bytes": 71116,
+      "sha256": "737535ed1c5ddf757cbb7cf77968b579413f73e5fe7b4b91d0e86b73ea430794",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/daily_text/601988_中国银行_90d.txt",
+      "bytes": 68997,
+      "sha256": "fc9d8133c739911954102cc63996e6dfa5671ea072287bfae412a4160b8e997b",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
     }
   ],
   "supplemental_inputs": {
-    "share_counts": "Tencent quote snapshot (2026-08-24); same share-count method for all three stocks",
+    "share_counts": "Tencent quote snapshot (2026-08-24); total/floating shares recorded per stock using the same fields",
     "profit_bases": {
       "600398": {
         "2025_annual_attributable_profit_yuan": 2165990940.78,
@@ -191,12 +598,111 @@
         "2025_annual_attributable_profit_yuan": 8954257202.51,
         "2026_q1_attributable_profit_yuan": 8062764940.78,
         "effective_method": "2024 annual before the 2025 annual and 2026 Q1 reports were released together after the 2026-04-30 close; Q1 x4 from 2026-05-06"
+      },
+      "601600": {
+        "annualized_attributable_profit_basis_yuan": 22109813181.66,
+        "tencent_snapshot_dynamic_pe": 7.34,
+        "tencent_snapshot_pb": 2.08,
+        "total_shares": 17154971327,
+        "floating_shares": 13203339905,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "601988": {
+        "annualized_attributable_profit_basis_yuan": 226619038778.69,
+        "tencent_snapshot_dynamic_pe": 8.73,
+        "tencent_snapshot_pb": 0.73,
+        "total_shares": 322212411814,
+        "floating_shares": 210765514846,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "600863": {
+        "annualized_attributable_profit_basis_yuan": 2777771018.28,
+        "tencent_snapshot_dynamic_pe": 13.37,
+        "tencent_snapshot_pb": 1.94,
+        "total_shares": 7835189560,
+        "floating_shares": 7063325057,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "601138": {
+        "annualized_attributable_profit_basis_yuan": 47487485261.35,
+        "tencent_snapshot_dynamic_pe": 24.96,
+        "tencent_snapshot_pb": 6.74,
+        "total_shares": 19844092284,
+        "floating_shares": 19844092284,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "000651": {
+        "annualized_attributable_profit_basis_yuan": 24340972964.28,
+        "tencent_snapshot_dynamic_pe": 9.58,
+        "tencent_snapshot_pb": 1.53,
+        "total_shares": 5601405741,
+        "floating_shares": 5522009474,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "300124": {
+        "annualized_attributable_profit_basis_yuan": 4053757317.29,
+        "tencent_snapshot_dynamic_pe": 38.94,
+        "tencent_snapshot_pb": 4.51,
+        "total_shares": 2707603944,
+        "floating_shares": 2410314720,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "600362": {
+        "annualized_attributable_profit_basis_yuan": 11266272892.2,
+        "tencent_snapshot_dynamic_pe": 13.96,
+        "tencent_snapshot_pb": 1.9,
+        "total_shares": 3462729405,
+        "floating_shares": 2075247405,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "601899": {
+        "annualized_attributable_profit_basis_yuan": 78316364793.45,
+        "tencent_snapshot_dynamic_pe": 11.69,
+        "tencent_snapshot_pb": 4.8,
+        "total_shares": 26590714622,
+        "floating_shares": 20601793140,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "300760": {
+        "annualized_attributable_profit_basis_yuan": 9318684707.38,
+        "tencent_snapshot_dynamic_pe": 20.61,
+        "tencent_snapshot_pb": 4.98,
+        "total_shares": 1211799431,
+        "floating_shares": 1210662145,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "002352": {
+        "annualized_attributable_profit_basis_yuan": 10102542328.52,
+        "tencent_snapshot_dynamic_pe": 17.22,
+        "tencent_snapshot_pb": 1.77,
+        "total_shares": 5265308078,
+        "floating_shares": 4799115259,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
+      },
+      "000807": {
+        "annualized_attributable_profit_basis_yuan": 14401963236.05,
+        "tencent_snapshot_dynamic_pe": 6.28,
+        "tencent_snapshot_pb": 2.63,
+        "total_shares": 3467957405,
+        "floating_shares": 3467921101,
+        "method": "implied from Tencent 2026-08-24 quote snapshot"
       }
     },
     "book_value_per_share_basis": {
       "600398": 3.6,
       "600690": 12.5,
-      "000858": 30.4
+      "000858": 30.4,
+      "601600": 4.548076923076923,
+      "601988": 8.410958904109588,
+      "600863": 2.443298969072165,
+      "601138": 8.862017804154302,
+      "000651": 27.20915032679739,
+      "300124": 12.926829268292684,
+      "600362": 23.90526315789474,
+      "601899": 7.172916666666667,
+      "300760": 31.825301204819276,
+      "002352": 18.666666666666664,
+      "000807": 9.916349809885931
     },
     "supplied_snapshot_override": "600398 on 2026-08-21 inner/outer values from the user-provided block"
   }

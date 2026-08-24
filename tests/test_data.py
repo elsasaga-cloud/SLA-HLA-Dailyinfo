@@ -180,6 +180,16 @@ MA5: 5.94 (上升), MA10: 6.00 (下降), MA20: 6.07 (上升), MA30: 6.00 (上升
         metadata = json.loads(
             (GENERATOR.DATA / "metadata.json").read_text(encoding="utf-8")
         )
+        self.assertEqual(
+            [(stock.code, stock.name) for stock in GENERATOR.STOCKS],
+            [(stock["code"], stock["name"]) for stock in metadata["stocks"]],
+        )
+        expected_paths = {
+            path.relative_to(ROOT).as_posix()
+            for directory in (GENERATOR.DATA, GENERATOR.OUTPUT)
+            for path in directory.glob("*.csv" if directory == GENERATOR.DATA else "*.txt")
+        }
+        self.assertEqual(expected_paths, {item["path"] for item in metadata["files"]})
         for item in metadata["files"]:
             path = ROOT / item["path"]
             self.assertTrue(path.is_file(), path)
