@@ -1,0 +1,85 @@
+name: 更新 15 分钟成交量数据
+
+on:
+  schedule:
+    # GitHub Actions cron 使用 UTC；07:01 UTC = 北京/香港时间 15:01。
+    - cron: "1 7 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-15min-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: 抓取、校验并保存数据
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TZ: Asia/Shanghai
+
+    steps:
+      - name: 检出运行分支
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+
+      - name: 配置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 抓取当天完整 15 分钟数据
+        id: fetch
+        shell: bash
+        run: |
+          today="$(date +%F)"
+          has_current_session=false
+
+          # 15:00 的最后一根 K 线可能稍迟发布，因此最多重试 5 次。
+          for attempt in 1 2 3 4 5; do
+            echo "第 ${attempt}/5 次抓取，目标交易日：${today}"
+            if python scripts/analyze_15min_volume.py; then
+              latest="$(python -c 'import json; print(json.load(open("data/15min/metadata.json", encoding="utf-8"))["latest_session"])')"
+              if [[ "${latest}" == "${today}" ]]; then
+                has_current_session=true
+                echo "latest_session=${latest}" >> "$GITHUB_OUTPUT"
+                break
+              fi
+              echo "新浪最新完整交易日为 ${latest}，尚未出现 ${today}。"
+            fi
+
+            if [[ "${attempt}" -lt 5 ]]; then
+              sleep 60
+            fi
+          done
+
+          echo "has_current_session=${has_current_session}" >> "$GITHUB_OUTPUT"
+          if [[ "${has_current_session}" != "true" ]]; then
+            # 节假日或数据源尚无当天完整数据时，不写入部分结果。
+            git restore --worktree data/15min
+            echo "::notice::当天没有完整的 16 根 15 分钟 K 线，本次不更新仓库。"
+          fi
+
+      - name: 运行完整性测试
+        if: steps.fetch.outputs.has_current_session == 'true'
+        run: python -m unittest discover -s tests -v
+
+      - name: 提交并推送更新
+        if: steps.fetch.outputs.has_current_session == 'true'
+        shell: bash
+        run: |
+          git add data/15min
+          if git diff --cached --quiet; then
+            echo "数据没有变化，无需提交。"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update 15-minute data through ${{ steps.fetch.outputs.latest_session }}"
+          git push origin "HEAD:${{ github.ref_name }}"
