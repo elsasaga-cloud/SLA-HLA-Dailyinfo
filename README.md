@@ -1,4 +1,4 @@
-# 14 只 A 股：90 个交易日逐日数据
+# 14 只 A 股：90 日逐日数据与 15 分钟成交量异动分析
 
 包含：
 
@@ -141,7 +141,49 @@ data/eastmoney/<代码>_<名称>_volume_warmup_5d.csv
 
 - [`data/eastmoney/metadata.json`](data/eastmoney/metadata.json)
 
-## 重新生成
+## 15 分钟成交量异动分析
+
+14 只股票均保存 **20 个历史交易日 + 最新完整交易日**，当前固定区间为 **2026-07-27 至 2026-08-24**。每个交易日含 16 根 15 分钟 K 线，每只股票共 336 行。
+
+数据统一来自新浪 `CN_MarketDataService.getKLineData` 15 分钟接口：
+
+```text
+https://quotes.sina.com.cn/cn/api/jsonp_v2.php/{callback}/CN_MarketDataService.getKLineData?symbol={sh|sz}{code}&scale=15&datalen=1000&ma=no
+```
+
+新浪接口的 `volume` 单位为股，写入 CSV 前除以 100，统一保存为手；`amount` 以元保存。最终原始数据和分析均位于 [`data/15min/`](data/15min/)，每只股票目录包含：
+
+```text
+{代码}_15min_raw.csv
+{代码}_day_summary.csv
+{代码}_15min_分析报告.txt
+{代码}_异动预警.txt
+成交量维度_操作指引.txt
+```
+
+分析报告实现以下口径：
+
+- 16 个固定时槽的量比及全天、开盘 30 分钟、尾盘 30 分钟量比；
+- 与前一交易日相同时槽相比的成交量跳变；
+- 连续开盘放量、首根/全天/尾盘极端放量；
+- 日内价格变化与全天量比的量价背离；
+- 最新交易日逐槽速报、异动预警和成交量维度评分指引。
+
+阈值、股票清单、数据口径及全部 70 个生成文件的 SHA-256 校验值见 [`data/15min/metadata.json`](data/15min/metadata.json)。操作指引只基于成交量，不构成投资建议。
+
+使用新浪接口重新抓取并生成：
+
+```bash
+python scripts/analyze_15min_volume.py
+```
+
+若已缓存每只股票的新浪 JSON 数组（文件名为 `<代码>.json`），可在不联网的情况下确定性重建：
+
+```bash
+python scripts/analyze_15min_volume.py --source-json-dir /path/to/cached-json
+```
+
+## 重新生成日线数据
 
 使用仓库内数据重新生成文本：
 
