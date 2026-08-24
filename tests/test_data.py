@@ -33,10 +33,10 @@ class DataValidationTests(unittest.TestCase):
             self.assertEqual(90, len(target))
             self.assertEqual(209, len(warmup))
             self.assertEqual(5, len(volume_seed))
-            self.assertEqual("2026-04-14", target[0]["date"])
-            self.assertEqual("2026-08-21", target[-1]["date"])
-            self.assertEqual("2025-06-04", warmup[0]["date"])
-            self.assertEqual("2026-04-13", warmup[-1]["date"])
+            self.assertEqual("2026-04-15", target[0]["date"])
+            self.assertEqual("2026-08-24", target[-1]["date"])
+            self.assertEqual("2025-06-05", warmup[0]["date"])
+            self.assertEqual("2026-04-14", warmup[-1]["date"])
             self.assertEqual(
                 [row["date"] for row in warmup[-5:]],
                 [row["date"] for row in volume_seed],
@@ -113,7 +113,9 @@ class DataValidationTests(unittest.TestCase):
         text = (GENERATOR.OUTPUT / "600398_海澜之家_90d.txt").read_text(
             encoding="utf-8"
         )
-        block = text[text.index("Date: 2026-08-21") :].strip()
+        start = text.index("Date: 2026-08-21")
+        end = text.index("\n\n\nDate:", start)
+        block = text[start:end].strip()
         expected = """Date: 2026-08-21
 
 股票数据： 海澜之家 600398 20260821
