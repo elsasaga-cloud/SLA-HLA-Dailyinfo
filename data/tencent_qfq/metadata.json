@@ -1,0 +1,39 @@
+{
+  "source": "腾讯证券",
+  "source_host": "web.ifzq.gtimg.cn",
+  "retrieved_at": "2026-08-24T12:10:07+08:00",
+  "requested_end_date": "2026-08-21",
+  "date_range": {
+    "start": "2026-04-14",
+    "end": "2026-08-21"
+  },
+  "trading_days_per_stock": 90,
+  "adjustment": "qfq",
+  "adjustment_description": "前复权",
+  "columns": {
+    "date": "交易日期",
+    "open": "前复权开盘价",
+    "close": "前复权收盘价",
+    "high": "前复权最高价",
+    "low": "前复权最低价",
+    "volume_lots": "成交量（手，1手=100股）"
+  },
+  "datasets": [
+    {
+      "stock_code": "600398",
+      "stock_name": "海澜之家",
+      "file": "600398_海澜之家_90d.csv",
+      "rows": 90,
+      "source_url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh600398,day,,2026-08-21,90,qfq",
+      "sha256": "5bdef4d4e2af80099a27dd04885692fdb612a5782485ceb236a65d5c3c2e4e9a"
+    },
+    {
+      "stock_code": "600690",
+      "stock_name": "海尔智家",
+      "file": "600690_海尔智家_90d.csv",
+      "rows": 90,
+      "source_url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh600690,day,,2026-08-21,90,qfq",
+      "sha256": "caf13aaa20f48a8e7720d27941483d8a76fc5914eee06c1492d926e130bf3794"
+    }
+  ]
+}
