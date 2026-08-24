@@ -52,6 +52,34 @@ class Stock:
 
 STOCKS = (
     Stock(
+        code="000858",
+        name="五粮液",
+        total_shares=3_881_608_005,
+        floating_shares=3_881_513_391,
+        book_value_per_share=30.40,
+        profit_bases=(
+            ProfitBasis("0000-00-00", 31_853_172_533.98),
+            ProfitBasis("2026-05-06", 8_062_764_940.78 * 4),
+        ),
+        actions=(
+            CorporateAction(
+                "2025-07-18",
+                3.169,
+                "2024 年年度分红：每 10 股派 31.69 元",
+            ),
+            CorporateAction(
+                "2025-12-18",
+                2.578,
+                "2025 年中期分红：每 10 股派 25.78 元",
+            ),
+            CorporateAction(
+                "2026-07-16",
+                2.5779999,
+                "2025 年年度分红：每 10 股派 25.796852 元",
+            ),
+        ),
+    ),
+    Stock(
         code="600398",
         name="海澜之家",
         total_shares=4_802_770_296,

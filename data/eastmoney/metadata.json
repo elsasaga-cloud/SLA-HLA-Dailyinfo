@@ -3,6 +3,10 @@
   "last_completed_session": "2026-08-21",
   "stocks": [
     {
+      "code": "000858",
+      "name": "五粮液"
+    },
+    {
       "code": "600398",
       "name": "海澜之家"
     },
@@ -15,7 +19,7 @@
     "provider": "东方财富 (EastMoney)",
     "endpoint": "https://push2his.eastmoney.com/api/qt/stock/kline/get",
     "parameters": {
-      "secid": "1.{code}",
+      "secid": "{market}.{code} (0=深圳, 1=上海)",
       "klt": 101,
       "fqt": 0,
       "end": "20260821",
@@ -50,15 +54,53 @@
       "600690": {
         "ex_date": "2026-08-21",
         "prior_price_adjustment_yuan": -0.87
-      }
+      },
+      "000858": [
+        {
+          "ex_date": "2025-07-18",
+          "prior_price_adjustment_yuan": -3.169
+        },
+        {
+          "ex_date": "2025-12-18",
+          "prior_price_adjustment_yuan": -2.578
+        },
+        {
+          "ex_date": "2026-07-16",
+          "prior_price_adjustment_yuan": -2.5779999
+        }
+      ]
     },
     "five_day_performance": "previous completed K-line close / close five sessions earlier - 1, matching supplied scraper",
-    "dynamic_pe": "market capitalization / latest effective annualized disclosed net profit; 2025 annual basis before Q1 publication, 2026 Q1 x4 afterward",
+    "dynamic_pe": "market capitalization / latest effective annualized disclosed net profit; latest disclosed annual basis before Q1 publication, 2026 Q1 x4 afterward",
     "pb": "snapshot close / Tencent-style book-value-per-share basis",
     "market_caps": "snapshot close multiplied by total/floating share counts",
     "inner_outer": "supplied 600398/2026-08-21 values retained exactly; other historical dates use deterministic candle-direction allocation because full historical tick downloads are unavailable"
   },
   "files": [
+    {
+      "path": "data/eastmoney/000858_五粮液_chip_warmup_209d.csv",
+      "bytes": 9239,
+      "sha256": "e78e01e474a8c319c534db153dad21c2937ab7e5a3df8553bf26b074a61025dc",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/000858_五粮液_kline_90d.csv",
+      "bytes": 7097,
+      "sha256": "474f268aca1e2c05a8448736091c5602407752d404f51e6e683baecf49a2c853",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/000858_五粮液_volume_warmup_5d.csv",
+      "bytes": 104,
+      "sha256": "adaee1588443ceea53ccac26bb3558d6d903a1e1d91ce14e0b1312b4b1ed6ba0",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
     {
       "path": "data/eastmoney/600398_海澜之家_chip_warmup_209d.csv",
       "bytes": 7567,
@@ -108,6 +150,14 @@
       "last_date": "2026-04-13"
     },
     {
+      "path": "data/daily_text/000858_五粮液_90d.txt",
+      "bytes": 70999,
+      "sha256": "0b10cb8586564b3a75f71ad8240a6a74b8a156ac9a58dd05f05e01da02321031",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
       "path": "data/daily_text/600398_海澜之家_90d.txt",
       "bytes": 68300,
       "sha256": "720dc7c0f420bf017d226105bab2e5cd20f152793af8e4fa7f607db90a4b8cbd",
@@ -125,7 +175,7 @@
     }
   ],
   "supplemental_inputs": {
-    "share_counts": "Tencent quote snapshot (2026-08-24); same share-count method for both stocks",
+    "share_counts": "Tencent quote snapshot (2026-08-24); same share-count method for all three stocks",
     "profit_bases": {
       "600398": {
         "2025_annual_attributable_profit_yuan": 2165990940.78,
@@ -135,11 +185,18 @@
         "2025_annual_attributable_profit_yuan": 19552798222.85,
         "2026_q1_attributable_profit_yuan": 4651612980.68
       },
-      "method": "use annual result before Q1 publication and Q1 x 4 afterward"
+      "method": "use annual result before Q1 publication and Q1 x 4 afterward",
+      "000858": {
+        "2024_annual_attributable_profit_yuan": 31853172533.98,
+        "2025_annual_attributable_profit_yuan": 8954257202.51,
+        "2026_q1_attributable_profit_yuan": 8062764940.78,
+        "effective_method": "2024 annual before the 2025 annual and 2026 Q1 reports were released together after the 2026-04-30 close; Q1 x4 from 2026-05-06"
+      }
     },
     "book_value_per_share_basis": {
       "600398": 3.6,
-      "600690": 12.5
+      "600690": 12.5,
+      "000858": 30.4
     },
     "supplied_snapshot_override": "600398 on 2026-08-21 inner/outer values from the user-provided block"
   }

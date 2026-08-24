@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Fetch source K-lines for the two requested stocks and rebuild outputs.
+"""Fetch source K-lines for the requested stocks and rebuild outputs.
 
-The fetch uses one EastMoney endpoint and the same fields/method for both
+The fetch uses one EastMoney endpoint and the same fields/method for all
 stocks.  It retrieves 299 sessions: 209 warm-up sessions plus the requested
 90 sessions.  Standard-library Python only.
 """
@@ -20,7 +20,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "eastmoney"
 ENDPOINT = "https://push2his.eastmoney.com/api/qt/stock/kline/get"
-STOCKS = (("600398", "海澜之家"), ("600690", "海尔智家"))
+STOCKS = (
+    ("000858", "五粮液", "0"),
+    ("600398", "海澜之家", "1"),
+    ("600690", "海尔智家", "1"),
+)
 FIELDS = (
     "date",
     "open",
@@ -36,10 +40,10 @@ FIELDS = (
 )
 
 
-def fetch(code: str, end_date: str) -> list[list[str]]:
+def fetch(code: str, market: str, end_date: str) -> list[list[str]]:
     query = urllib.parse.urlencode(
         {
-            "secid": f"1.{code}",
+            "secid": f"{market}.{code}",
             "fields1": "f1,f2,f3,f4,f5,f6",
             "fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61",
             "klt": "101",
@@ -99,8 +103,8 @@ def main() -> None:
     if len(args.end_date) != 8 or not args.end_date.isdigit():
         parser.error("--end-date must be YYYYMMDD")
 
-    for code, name in STOCKS:
-        store(code, name, fetch(code, args.end_date))
+    for code, name, market in STOCKS:
+        store(code, name, fetch(code, market, args.end_date))
         print(f"fetched {code} {name}")
 
     subprocess.run(

@@ -56,7 +56,7 @@ class DataValidationTests(unittest.TestCase):
                 self.assertGreater(float(row["amount_yuan"]), 0)
 
     def test_hailan_chip_values_match_reference_samples(self) -> None:
-        stock = GENERATOR.STOCKS[0]
+        stock = next(stock for stock in GENERATOR.STOCKS if stock.code == "600398")
         rows = GENERATOR.read_rows(
             GENERATOR.DATA / f"{stock.stem}_chip_warmup_209d.csv"
         ) + GENERATOR.read_rows(GENERATOR.DATA / f"{stock.stem}_kline_90d.csv")
@@ -152,6 +152,29 @@ class DataValidationTests(unittest.TestCase):
 
 MA5: 5.94 (上升), MA10: 6.00 (下降), MA20: 6.07 (上升), MA30: 6.00 (上升), MA40: 5.87 (上升), MA50: 5.83 (上升), MA60: 5.82 (上升), MA70: 5.83 (下降), MA80: 5.91 (下降), MA90: 5.98 (下降)"""
         self.assertEqual(expected, block)
+
+    def test_wuliangye_2026_08_21_core_fields(self) -> None:
+        text = (GENERATOR.OUTPUT / "000858_五粮液_90d.txt").read_text(
+            encoding="utf-8"
+        )
+        block = text[text.index("Date: 2026-08-21") :]
+        expected_lines = (
+            "股票数据： 五粮液 000858 20260821",
+            "71.19",
+            "-0.90  -1.25%",
+            "今开: 71.96\t昨收: 72.09\t最高价: 72.00\t最低价: 71.11",
+            "涨停价: 79.30\t跌停价: 64.88\t换手率: 0.51%\t量比: 0.77",
+            "成交量: 19.71万\t成交额: 14.05亿\t动态市盈率: 8.57\t市净率: 2.34",
+            "总市值: 2763亿\t流通市值: 2763亿\t振幅: 1.23%",
+        )
+        for line in expected_lines:
+            self.assertIn(line, block)
+
+        ex_date_block = text[
+            text.index("Date: 2026-07-16") : text.index("Date: 2026-07-17")
+        ]
+        self.assertIn("0.08  0.11%", ex_date_block)
+        self.assertIn("今开: 73.33\t昨收: 73.82", ex_date_block)
 
     def test_metadata_hashes(self) -> None:
         metadata = json.loads(
