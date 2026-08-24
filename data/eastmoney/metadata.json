@@ -1,0 +1,130 @@
+{
+  "as_of": "2026-08-24",
+  "last_completed_session": "2026-08-21",
+  "stocks": [
+    {
+      "code": "600398",
+      "name": "海澜之家"
+    },
+    {
+      "code": "600690",
+      "name": "海尔智家"
+    }
+  ],
+  "source": {
+    "provider": "东方财富 (EastMoney)",
+    "endpoint": "https://push2his.eastmoney.com/api/qt/stock/kline/get",
+    "parameters": {
+      "secid": "1.{code}",
+      "klt": 101,
+      "fqt": 0,
+      "end": "20260821",
+      "lmt": 299,
+      "fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61"
+    },
+    "field_mapping": {
+      "f51": "date",
+      "f52": "open",
+      "f53": "close",
+      "f54": "high",
+      "f55": "low",
+      "f56": "volume_lots",
+      "f57": "amount_yuan",
+      "f58": "amplitude_pct",
+      "f59": "change_pct",
+      "f60": "change_amount",
+      "f61": "turnover_rate_pct"
+    }
+  },
+  "methodology": {
+    "requested_sessions": 90,
+    "chip_window_sessions": 210,
+    "chip_algorithm": "EastMoney CYQ browser algorithm port; rolling 210-session OHLC and turnover input",
+    "volume_ratio": "current session volume / arithmetic mean of preceding 5 session volumes",
+    "moving_averages": "arithmetic mean of adjusted closes; trend compares current MA with prior-session MA",
+    "corporate_action_handling": {
+      "600398": {
+        "ex_date": "2026-05-11",
+        "prior_price_adjustment_yuan": -0.41
+      },
+      "600690": {
+        "ex_date": "2026-08-21",
+        "prior_price_adjustment_yuan": -0.87
+      }
+    },
+    "unavailable_historical_fields": [
+      "PE",
+      "PB",
+      "total_market_cap",
+      "floating_market_cap",
+      "inner_volume",
+      "outer_volume"
+    ]
+  },
+  "files": [
+    {
+      "path": "data/eastmoney/600398_海澜之家_chip_warmup_209d.csv",
+      "bytes": 7567,
+      "sha256": "7082144af0061e24b0b7d6af3f2e3f8713dad9f05fa79fa683f76f256db9ad62",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/600398_海澜之家_kline_90d.csv",
+      "bytes": 6585,
+      "sha256": "04787015138b25b401a71c6e93ac1ccbb3d704dc9f97b48fe7119849a5205943",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/600398_海澜之家_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "24ed3edfb0a7ed4e58717cfc046963b249b75e4b93ea96598dcbc3c2cf6bcc91",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/600690_海尔智家_chip_warmup_209d.csv",
+      "bytes": 8403,
+      "sha256": "3c6d03d3b8d9567602ea9d59a137282c29ac632425f50c4c2b937d20b709cd89",
+      "rows": 209,
+      "first_date": "2025-06-04",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/eastmoney/600690_海尔智家_kline_90d.csv",
+      "bytes": 7001,
+      "sha256": "2d71fe691e735273bf6fda6c8b9993817d5cb92b6efa200eda3d8e888a3d84dc",
+      "rows": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/eastmoney/600690_海尔智家_volume_warmup_5d.csv",
+      "bytes": 107,
+      "sha256": "a0521b9135ade1bd3fd06199b4c7466dc4f8e37bcf5e16abd545e7b04cf9d370",
+      "rows": 5,
+      "first_date": "2026-04-07",
+      "last_date": "2026-04-13"
+    },
+    {
+      "path": "data/daily_text/600398_海澜之家_90d.txt",
+      "bytes": 123414,
+      "sha256": "eb5a6e230083e76a116287420d9fd9366e12521f8add15f7dd438ee3fa3b0dea",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    },
+    {
+      "path": "data/daily_text/600690_海尔智家_90d.txt",
+      "bytes": 125279,
+      "sha256": "ec26cf897202e58e6d55e049f12fe01da2b37c468ac096a9f4307eb058ff4e1b",
+      "daily_blocks": 90,
+      "first_date": "2026-04-14",
+      "last_date": "2026-08-21"
+    }
+  ]
+}
