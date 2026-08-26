@@ -107,7 +107,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--end-date",
-        default="20260825",
+        default="20260826",
         help="last completed session as YYYYMMDD (default: %(default)s)",
     )
     args = parser.parse_args()
