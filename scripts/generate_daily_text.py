@@ -164,7 +164,13 @@ STOCKS = (
         floating_shares=1_210_662_145,
         book_value_per_share=158.49 / 4.98,
         profit_bases=(ProfitBasis("0000-00-00", 9_318_684_707.38),),
-        actions=(),
+        actions=(
+            CorporateAction(
+                "2026-09-08",
+                1.33,
+                "现金分红除权；历史价格在该日及以后计算技术指标时前复权 1.33 元",
+            ),
+        ),
     ),
     Stock(
         code="002352",
