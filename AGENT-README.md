@@ -12,8 +12,8 @@
 | 仓库路径 | `/home/user/SLA-HLA-Dailyinfo`（github.com/elsasaga-cloud/SLA-HLA-Dailyinfo） |
 | 当前主分支 | `main` |
 | 工作分支 | `arena/01a0424e-sla-hla-dailyinfo`（本会话固定绑定，所有提交只推送到此分支） |
-| 最后更新时间 | 2026-09-14 15:20（Asia/Shanghai） |
-| 最后更新由 | 对话 13：会话全记录入库（AGENT-SESSION-LOG.md） |
+| 最后更新时间 | 2026-09-14 15:29（Asia/Shanghai） |
+| 最后更新由 | 对话 14：09-14 双数据集滚动（新浪深市事故→东财兜底） |
 
 ---
 
@@ -27,10 +27,10 @@
 
 ### 正在进行的任务
 ```
-任务：无（2026-09-11 周期已完成并推送）
+任务：无（2026-09-14 周期已完成并推送）
 状态：空闲，等待下一交易日
 阻塞原因：无
-下一步：下周一 2026-09-14 收盘后执行每日滚动流程（见下方"每日滚动流程"；注意沙箱时钟为 UTC，交易日判定用 TZ=Asia/Shanghai date 并以数据源交叉验证）
+下一步：下周二 2026-09-15 收盘后执行每日滚动流程（见下方"每日滚动流程"；注意沙箱时钟为 UTC，交易日判定用 TZ=Asia/Shanghai date 并以数据源交叉验证）
 ```
 
 ### 每日滚动流程（下一 Agent 照此执行）
@@ -39,11 +39,12 @@
 3. 滚动 3 类 CSV：`kline'=kline[1:]+[new]`；`warmup'=warmup[1:]+[kline[0]]`；`seed'=seed[1:]+[{date, volume_lots} of kline[0]]`，断言长度 90/209/5 与边界日期
 4. `python3 scripts/generate_daily_text.py` 重生成 14 个 daily_text，**中段 89 区块必须与 `git show HEAD:<file>` 逐字节一致**
 5. 新浪抓 15 分钟（scale=15, datalen=17：昨 15:00 重叠根 + 当日 16 根），重叠根与存储 CSV 末行核对后与现有 336 行拼成 352 根缓存（新浪 volume ÷100 折为手）；**补更 n 天时 datalen=16n+1**（如两日补更用 33），缓存=336+16n 根
-6. `python3 scripts/analyze_15min_volume.py --source-json-dir <缓存目录>`（14 只全部就绪后再跑）；验收 336 行 × 21 交易日、新浪当日收盘 vs 东财日线漂移 ≤ abs 5e-3
+6. `python3 scripts/analyze_15min_volume.py --source-json-dir <缓存目录>`（14 只全部就绪后再跑）；验收 336 行 × 21 交易日、新浪当日收盘 vs 东财日线漂移 ≤ abs 5e-3、**新浪当日 16 根量合计 vs 东财日量 ≤0.5%**（600398/601988 历史基线约 −0.05~−1.3%；远超基线的骤降=数据事故，禁入库——09-14 深市 6 只 10:45/11:00 近零量事故即靠此闸发现，OHLC 漂移闸测不出该类损坏）。事故兜底配方：东财 `klt=15`（含 amount）取当日 16 根 + 腾讯 `ifzq.gtimg.cn/appstock/app/kline/mkline` 逐根交叉验证（前 15 根量应全等），15:00 尾根量/额按东财官方日量对账（日合计精确一致），详见 AGENT-SESSION-LOG §9
 7. 更新两份 metadata.json 的哈希与 as_of；`python3 -m unittest discover -s tests` 9/9；patch tests/README/fetch 默认日期
 8. commit + push 到工作分支；**更新本 AGENT-README.md**（宪法第三条）
 
 ### 已完成的任务（最近5条）
+- [x] 2026-09-14 双数据集滚动至 09-14（14 只，9/9 测试，漂移 0.0000；新浪深市 6 只当日数据缺失事故→东财 klt=15 兜底+腾讯交叉验证+尾根对账）— 完成于 2026-09-14
 - [x] 会话全记录入库：新建 AGENT-SESSION-LOG.md（对话 10-12 全量明细：抓取批次/全量行情行/校验矩阵/教训/Commit 目录）— 完成于 2026-09-14
 - [x] 2026-09-11 双数据集滚动至 09-11（14 只，9/9 测试，漂移 0.0000）— 完成于 2026-09-11
 - [x] 2026-09-09+09-10 两日补更滚动至 09-10（14 只，9/9 测试，双日漂移 0.0000；datalen=33 一次覆盖两天）— 完成于 2026-09-10
@@ -71,13 +72,15 @@
 
 ```
 main                                  ← 主分支（基线 00821de，初始数据至 2026-08-26）
-└── arena/01a0424e-sla-hla-dailyinfo  ← 当前工作分支，最新 commit: 8c7e191 更新 90 日数据与 15 分钟数据至 2026-09-11（14 只）
+└── arena/01a0424e-sla-hla-dailyinfo  ← 当前工作分支，最新 commit: 7f206e5 更新 90 日数据与 15 分钟数据至 2026-09-14（14 只）
 ```
 
 **关键 Commit 记录**
 
 | Commit Hash | 分支 | 说明 |
 |-------------|------|------|
+| `7f206e5` | arena/01a0424e… | 09-14 双数据集滚动（kline 05-11..09-14；15min 08-17..09-14；新浪深市事故东财兜底） |
+| `69557dd` | arena/01a0424e… | 文档：AGENT-SESSION-LOG 落库（对话 10-13） |
 | `7e55cd9` | arena/01a0424e… | 文档：AGENT-README 更新至对话 12 |
 | `8c7e191` | arena/01a0424e… | 09-11 双数据集滚动（kline 05-08..09-11；15min 08-14..09-11） |
 | `24e3afe` | arena/01a0424e… | 文档：AGENT-README 更新至对话 11 |
@@ -107,13 +110,13 @@ SLA-HLA-Dailyinfo/
 ├── AGENT-README.md                 # 本文件：对话状态快照
 ├── AGENT-SESSION-LOG.md            # 会话全记录（对话级明细日志，append-only；覆盖对话 10 起）
 ├── data/eastmoney/                 # 日线数据（14 只 × 3 CSV + metadata.json 共 56 条 SHA-256）
-│   ├── *_kline_90d.csv             # 90 交易日 K 线（现 2026-05-08..09-11）
-│   ├── *_chip_warmup_209d.csv      # 210 日筹码预热窗（现 2025-06-25..2026-05-07）
-│   └── *_volume_warmup_5d.csv      # 量比 5 日种子（现 2026-04-28..05-07）
+│   ├── *_kline_90d.csv             # 90 交易日 K 线（现 2026-05-11..09-14）
+│   ├── *_chip_warmup_209d.csv      # 210 日筹码预热窗（现 2025-06-26..2026-05-08）
+│   └── *_volume_warmup_5d.csv      # 量比 5 日种子（现 2026-04-29..05-08）
 ├── data/daily_text/                # 用户指定固定格式的 90 区块文本 × 14（格式受测试逐字节约束，禁改格式）
 ├── data/15min/                     # 15 分钟数据（14 目录 × 5 文件 + metadata.json 共 70 条哈希）
 │   └── <代码_名称>/                # *_15min_raw.csv（固定 336 行）+ day_summary + 分析报告 + 异动预警 + 操作指引
-├── scripts/fetch_eastmoney_90d.py  # 东财日线抓取脚本（默认 end=20260911）
+├── scripts/fetch_eastmoney_90d.py  # 东财日线抓取脚本（默认 end=20260914）
 ├── scripts/generate_daily_text.py  # 由 eastmoney CSV 生成 daily_text（含 CorporateActions 除权表）
 ├── scripts/analyze_15min_volume.py # 新浪 15 分钟抓取/分析/报告（--source-json-dir 走本地缓存）
 └── tests/                          # 9 个单元测试（格式、边界日期、HLA 08-21 区块字节校验、哈希覆盖）
@@ -159,6 +162,9 @@ SLA-HLA-Dailyinfo/
 - **已踩过的坑**：沙箱被外部重置（git HEAD 回退到旧基线、工作区呈脏状态；已发生 13 次，/tmp 与数据文件通常存活）  
   **解决方案**：`git ls-remote origin arena/01a0424e-sla-hla-dailyinfo` 确认远端 tip → `git fetch origin arena/01a0424e-sla-hla-dailyinfo` → `git diff FETCH_HEAD --stat` 验证工作区与远端内容差异（应为 0）→ 向用户说明影响后 `git reset --hard FETCH_HEAD`；该 reset 为纯元数据对齐、零内容损失
 
+- **已踩过的坑**：新浪 15 分钟接口深市股票当日数据缺失（09-14 事故：6 只深市股 10:45/11:00 两根量近乎为零——000651 2600/1200 股 vs 正常百万级；三次间隔重抓逐字节一致=服务端持久损坏；沪市 8 只同时点完全正常；OHLC 聚合与东财一致故漂移闸不报警，唯有量合计闸能发现）  
+  **解决方案**：当日 16 根改用东财 `klt=15` 接口（自带逐根 amount）+ 腾讯 `mkline` m15 逐根交叉验证（09:45..14:45 量全等；低点颗粒度腾讯偏粗最大差 0.30 元，东财与新浪两源一致处从两源）；15:00 尾根量/额按东财官方日量对账入库（东财 15min 尾根本身多计 ~0.5%，对账后日合计与官方精确一致）；新浪 payload[0] 尾根（昨日 15:00）不受污染，重叠根断言照常执行；全程记录入 eastmoney metadata snapshot_update_note 与 AGENT-SESSION-LOG §9
+
 - **已踩过的坑**：沙箱系统时钟为 UTC（比北京时间慢 8 小时，"上午 11 点"可能实为北京时间晚上）  
   **解决方案**：交易日/收盘判定一律 `TZ=Asia/Shanghai date`；并用数据源交叉验证——新浪 datalen=17 若返回 [0]=昨日 15:00 + 当日完整 16 根（09:45..15:00）即已收盘；末根非 15:00 则仍在盘中，禁止滚动（09-10 发现，详见 AGENT-SESSION-LOG §2.1）
 
@@ -170,6 +176,11 @@ SLA-HLA-Dailyinfo/
 ## 💬 对话历史摘要
 
 > 按时间倒序，每次对话一条记录。
+
+### 对话 14 — 2026-09-14
+**主题**：2026-09-14 双数据集滚动更新（14 只）+ 新浪深市数据事故处置  
+**产出**：Commit `7f206e5`；kline 05-11..09-14、15min 08-17..09-14（336×14）、daily_text 中段 89 区块逐字节一致、9/9 测试、126 哈希核对；新浪 vs 东财 OHLC 漂移 0.0000；无除权除息；**新浪深市 6 只当日 10:45/11:00 两根近零量（三次间隔抓取一致、沪市 8 只正常）→ 深市当日 16 根改用东财 klt=15 + 腾讯 m15 逐根交叉验证（前 15 根量全等，OHLC 最大差 0.30 元）+ 15:00 尾根按官方日量对账**；行情：6 涨/8 跌（海澜之家 +2.57 领涨，工业富联 −3.90 领跌）  
+**遗留问题**：无
 
 ### 对话 13 — 2026-09-14
 **主题**：会话全信息记录入库（用户指令：所有信息入库、符合 AGENT-CONSTITUTION/AGENT-README 双框架、保证其他 Agent 无缝衔接）  
