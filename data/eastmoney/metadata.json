@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-09-17",
-  "last_completed_session": "2026-09-17",
+  "as_of": "2026-09-18",
+  "last_completed_session": "2026-09-18",
   "stocks": [
     {
       "code": "000858",
@@ -66,7 +66,7 @@
       "secid": "{market}.{code} (0=深圳, 1=上海)",
       "klt": 101,
       "fqt": 0,
-      "end": "20260917",
+      "end": "20260918",
       "lmt": 299,
       "fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61"
     },
@@ -83,7 +83,7 @@
       "f60": "change_amount",
       "f61": "turnover_rate_pct"
     },
-    "snapshot_update_note": "2026-09-01 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-23..2026-09-01; no corporate actions on 2026-09-01. 2026-09-02 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-24..2026-09-02, chip warm-up 2025-06-16..2026-04-23; no corporate actions on 2026-09-02. 2026-09-03 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-27..2026-09-03, chip warm-up 2025-06-17..2026-04-24; no corporate actions on 2026-09-03. 2026-09-04 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-28..2026-09-04, chip warm-up 2025-06-18..2026-04-27; no corporate actions on 2026-09-04. 2026-09-07 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-29..2026-09-07, chip warm-up 2025-06-19..2026-04-28; no corporate actions on 2026-09-07. 2026-09-08 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-30..2026-09-08, chip warm-up 2025-06-20..2026-04-29; corporate action: 300760 ex-dividend on 2026-09-08 (2026 second interim dividend CNY1.33/share, 10派13.30); other 13 symbols none. 2026-09-09 rolling update (catch-up): appended from the EastMoney K-line endpoint; window now 2026-05-06..2026-09-09, chip warm-up 2025-06-23..2026-04-30; no corporate actions on 2026-09-09. 2026-09-10 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-07..2026-09-10, chip warm-up 2025-06-24..2026-05-06; no corporate actions on 2026-09-10. 2026-09-11 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-08..2026-09-11, chip warm-up 2025-06-25..2026-05-07; no corporate actions on 2026-09-11. 2026-09-14 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-11..2026-09-14, chip warm-up 2025-06-26..2026-05-08; no corporate actions on 2026-09-14. 15-minute side same-day note: Sina intraday feed incomplete for 2026-09-14 on all 6 SZSE symbols (10:45/11:00 bars near-zero volume; identical across 3 spaced refetches; SSE symbols unaffected). 2026-09-14 15-minute bars for the 6 SZSE symbols sourced from the EastMoney klt=15 endpoint, cross-validated bar-by-bar against Tencent m15 (slot volumes identical for 09:45..14:45; OHLC max deviation CNY0.30, within 5e-3 relative); each 15:00 tail volume/amount reconciled to the official EastMoney daily totals so per-day sums match exactly (pre-reconciliation tail deltas +105/+108/+113/+47/0/-1 lots vs Tencent). 2026-09-15 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-12..2026-09-15, chip warm-up 2025-06-27..2026-05-11; no corporate actions on 2026-09-15. 15-minute side: Sina SZSE feed recovered on 2026-09-15 (all 16 intraday bars healthy; per-day volume sums match EastMoney daily totals to 0.000% on all 6 SZSE symbols; SSE symbols -0.09%..-0.34%, within the known Sina baseline). Overlap-note: for the 6 SZSE symbols the stored 2026-09-14 15:00 tail is the day-total-reconciled value recorded during the 09-14 Sina outage; Sina's own 09-14 15:00 bar differs from it by up to 0.7% in volume/amount and up to CNY0.05 in OHLC (source granularity), so the 09-15 overlap check used tiered tolerances (SSE exact, SZSE <=0.8% volume/amount, <=0.05 OHLC). 2026-09-16 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-13..2026-09-16, chip warm-up 2025-06-30..2026-05-12, volume seed 2026-05-06..2026-05-12 (heads skipped the 2025-06-28/29 weekend and the 2026-05-01..05-05 holiday cluster); no corporate actions on 2026-09-16. 15-minute side all-normal: Sina healthy on both exchanges (SZSE day-volume sums match EastMoney daily totals to 0.000% for the second straight day; SSE -0.16%..-0.44%, within known baseline); overlap roots exact on all 14. 2026-09-17 rolling update: window 2026-05-14..2026-09-17, chip warm-up 2025-07-01..2026-05-13, volume seed 2026-05-07..2026-05-13. First corporate action in the rolling history: 002352 ex-dividend on 2026-09-17 (cash ~0.47 CNY/share inferred from EM fields chg +0.47 / pct +1.55% / amplitude 2.44% all referencing 30.28 = 30.75 - 0.47; raw price series uninterrupted, stored as-is). EM re-fetch revised 300124's 2026-09-16 amount by -0.33 CNY (within the 1.0 tolerance; stored row untouched). 15-minute side: SZSE day-sums ~0.000% for a 3rd straight day; SSE within 0.5% except 600398 -1.087% (per-stock baseline 1.5%: Sina's own daily total matches EM daily exactly - 2026-09-16: 40,983,677 sh = 409,837 lots - so the gap is Sina's internal 15-min SSE aggregation, observed band -0.27%..-1.09%); overlap roots exact on all 14. Roll-script regression fixed: chip append row must be re-columnized to the 6-col schema (an 11-field raw kline head polluted CYQ chip metrics on every block; caught by the middle-89 byte check)."
+    "snapshot_update_note": "2026-09-01 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-23..2026-09-01; no corporate actions on 2026-09-01. 2026-09-02 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-24..2026-09-02, chip warm-up 2025-06-16..2026-04-23; no corporate actions on 2026-09-02. 2026-09-03 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-27..2026-09-03, chip warm-up 2025-06-17..2026-04-24; no corporate actions on 2026-09-03. 2026-09-04 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-28..2026-09-04, chip warm-up 2025-06-18..2026-04-27; no corporate actions on 2026-09-04. 2026-09-07 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-29..2026-09-07, chip warm-up 2025-06-19..2026-04-28; no corporate actions on 2026-09-07. 2026-09-08 rolling update: appended from the EastMoney K-line endpoint; window now 2026-04-30..2026-09-08, chip warm-up 2025-06-20..2026-04-29; corporate action: 300760 ex-dividend on 2026-09-08 (2026 second interim dividend CNY1.33/share, 10派13.30); other 13 symbols none. 2026-09-09 rolling update (catch-up): appended from the EastMoney K-line endpoint; window now 2026-05-06..2026-09-09, chip warm-up 2025-06-23..2026-04-30; no corporate actions on 2026-09-09. 2026-09-10 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-07..2026-09-10, chip warm-up 2025-06-24..2026-05-06; no corporate actions on 2026-09-10. 2026-09-11 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-08..2026-09-11, chip warm-up 2025-06-25..2026-05-07; no corporate actions on 2026-09-11. 2026-09-14 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-11..2026-09-14, chip warm-up 2025-06-26..2026-05-08; no corporate actions on 2026-09-14. 15-minute side same-day note: Sina intraday feed incomplete for 2026-09-14 on all 6 SZSE symbols (10:45/11:00 bars near-zero volume; identical across 3 spaced refetches; SSE symbols unaffected). 2026-09-14 15-minute bars for the 6 SZSE symbols sourced from the EastMoney klt=15 endpoint, cross-validated bar-by-bar against Tencent m15 (slot volumes identical for 09:45..14:45; OHLC max deviation CNY0.30, within 5e-3 relative); each 15:00 tail volume/amount reconciled to the official EastMoney daily totals so per-day sums match exactly (pre-reconciliation tail deltas +105/+108/+113/+47/0/-1 lots vs Tencent). 2026-09-15 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-12..2026-09-15, chip warm-up 2025-06-27..2026-05-11; no corporate actions on 2026-09-15. 15-minute side: Sina SZSE feed recovered on 2026-09-15 (all 16 intraday bars healthy; per-day volume sums match EastMoney daily totals to 0.000% on all 6 SZSE symbols; SSE symbols -0.09%..-0.34%, within the known Sina baseline). Overlap-note: for the 6 SZSE symbols the stored 2026-09-14 15:00 tail is the day-total-reconciled value recorded during the 09-14 Sina outage; Sina's own 09-14 15:00 bar differs from it by up to 0.7% in volume/amount and up to CNY0.05 in OHLC (source granularity), so the 09-15 overlap check used tiered tolerances (SSE exact, SZSE <=0.8% volume/amount, <=0.05 OHLC). 2026-09-16 rolling update: appended from the EastMoney K-line endpoint; window now 2026-05-13..2026-09-16, chip warm-up 2025-06-30..2026-05-12, volume seed 2026-05-06..2026-05-12 (heads skipped the 2025-06-28/29 weekend and the 2026-05-01..05-05 holiday cluster); no corporate actions on 2026-09-16. 15-minute side all-normal: Sina healthy on both exchanges (SZSE day-volume sums match EastMoney daily totals to 0.000% for the second straight day; SSE -0.16%..-0.44%, within known baseline); overlap roots exact on all 14. 2026-09-17 rolling update: window 2026-05-14..2026-09-17, chip warm-up 2025-07-01..2026-05-13, volume seed 2026-05-07..2026-05-13. First corporate action in the rolling history: 002352 ex-dividend on 2026-09-17 (cash ~0.47 CNY/share inferred from EM fields chg +0.47 / pct +1.55% / amplitude 2.44% all referencing 30.28 = 30.75 - 0.47; raw price series uninterrupted, stored as-is). EM re-fetch revised 300124's 2026-09-16 amount by -0.33 CNY (within the 1.0 tolerance; stored row untouched). 15-minute side: SZSE day-sums ~0.000% for a 3rd straight day; SSE within 0.5% except 600398 -1.087% (per-stock baseline 1.5%: Sina's own daily total matches EM daily exactly - 2026-09-16: 40,983,677 sh = 409,837 lots - so the gap is Sina's internal 15-min SSE aggregation, observed band -0.27%..-1.09%); overlap roots exact on all 14. Roll-script regression fixed: chip append row must be re-columnized to the 6-col schema (an 11-field raw kline head polluted CYQ chip metrics on every block; caught by the middle-89 byte check). 2026-09-18 rolling update: window 2026-05-15..2026-09-18, chip warm-up 2025-07-02..2026-05-14, volume seed 2026-05-08..2026-05-14. EM post-ex rebasing disclosed: on re-fetch EastMoney recomputed 002352's 2026-09-17 ex-day fields against the raw prev close 30.75 (chg +0.47->0.00, pct +1.55->0.00, amplitude 2.44->2.41); the stored row keeps the ex-day reference-base values (30.28) and the revision is documented here only. Trailing-amount revisions on re-fetch within the 1.0 tolerance: 300124 2026-09-17 -0.43, 300760 2026-09-17 -0.05. EM intermittent HTTP 500 x3 (300760, 600398, 601138 - the last needed 3 attempts), all recovered by identical retries. 15-minute side: SZSE day-sums ~0.000% for a 4th straight day; SSE all within -0.044%..-0.153% (600398 back to -0.088%, no per-stock exemption needed); overlap roots exact on all 14. Market breadth 10 up / 2 down; top turnover 601138 6.99bn CNY."
   },
   "methodology": {
     "requested_sessions": 90,
@@ -143,451 +143,451 @@
   "files": [
     {
       "path": "data/eastmoney/000651_格力电器_kline_90d.csv",
-      "bytes": 7047,
-      "sha256": "201531cea1cae8565741a86876e3ddcb8f30fadf48ee24ab6df9af894b6ddcb9",
+      "bytes": 7045,
+      "sha256": "b7f4ac296ce607364de4e5884e6043919f460f1e7eea856cde42c6216e0849ba",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/000651_格力电器_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "3a6f237982c808b6afea43cf913c8a38635cb4c70a104635f70bebb9b13dda25",
+      "sha256": "d2b05561581a7b7a7ca3e117e47bd03c09e17ba3553bddb01970edb19818788a",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/000651_格力电器_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "b389b05062914c6faa4db63ad9e39ac58e10c70242ebabdf966ae1997f2e4a57",
+      "sha256": "3fa2c9aa2d3b52b4f24742835d94dfd0b377a210c56ca2bda143bb2c27f750dc",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/000651_格力电器_90d.txt",
-      "bytes": 70610,
-      "sha256": "9ce7285aed072179fac5c3350912af4de90ea7d7b9bc8e45d497aad8db178ae5",
+      "bytes": 70608,
+      "sha256": "d27805c24ce685ae59013408476ec8983111094929b0bfdf7df7c856b8a097b8",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/000807_云铝股份_kline_90d.csv",
-      "bytes": 7066,
-      "sha256": "8171c07f3871bae91dda60842d8da2c3adb2773a5af2849663672fe2fea43211",
+      "bytes": 7064,
+      "sha256": "e04bd69d0d720127fd1fb13b1a568da3b3e229b0acc7751bc8877ba84e222985",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/000807_云铝股份_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "2f407224387a7e3d4d185e1b2fff3ba9520ebeba9f7a51fe1701f39e8a17141c",
+      "sha256": "47d08c6fba1152ea23f20e582c71046cb12c498e71f51cc24778f0730e80f186",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/000807_云铝股份_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "ae5e2d907421f4d2ba9335490db1d0de5401ff6666b8475939625008c1f40276",
+      "sha256": "8b75cb96d1a4ae72ba25994af08aed7fd242aa47257c6ae64e61dda61e109867",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/000807_云铝股份_90d.txt",
-      "bytes": 70608,
-      "sha256": "89d0cade34b632350132153d170e126b725600ee2d40457d7268b6377fbbc260",
+      "bytes": 70603,
+      "sha256": "47cf175f9696865fdac5fbe1455175be3ab8d4129083aba62993fdb7c9c6f9fb",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/000858_五粮液_kline_90d.csv",
-      "bytes": 7048,
-      "sha256": "4815d95a36ffecb4a205fa4678eb6890860513af0829d70b92174cb13488a0bb",
+      "bytes": 7046,
+      "sha256": "213af0ab810b9f7b6920d0be618d9483a123d41f963cc381adb88e146fbf1492",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/000858_五粮液_chip_warmup_209d.csv",
-      "bytes": 9206,
-      "sha256": "e0e82f8874938afcf63745490317a46c23256e03de23aa93141a84ae21d0429b",
+      "bytes": 9202,
+      "sha256": "6720a7154fadf617d30cf5421e5bae243ba7fbef519ab1b45ba157abae20ef1a",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/000858_五粮液_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "6d0c9abaa33f247be0aa426f9793b5454c6e99c23055404bed59149442cb577a",
+      "sha256": "2d7d140385df7dbf703878446ef17890313539600ea095599613cd7af8289ef5",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/000858_五粮液_90d.txt",
-      "bytes": 70702,
-      "sha256": "c5e58e4760ff23feaab89903eef33daef7b7f60bb9eafc1aa373b84e2f0e1176",
+      "bytes": 70690,
+      "sha256": "e219bcdd40a2599e2149e0e4cc8f12d14a5a7ae66b3d81731b33810e9f5ace8d",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/002352_顺丰控股_kline_90d.csv",
-      "bytes": 6968,
-      "sha256": "bc860fe52d6f7037e66ab6f90e7f36875aad9b57c5fe4de4db1071a9597a11b9",
+      "bytes": 6966,
+      "sha256": "2071e09fad971b281e9e02450a56d1697b84eb177e77b4acfd8f84c0d65a5a10",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/002352_顺丰控股_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "19ca2e76c8b726eb1a913e361ab716c3e2c95696fd02e8851c04660ae012bccd",
+      "sha256": "8068800a9ab5ddf808e07e4b9a86e60c5509d9aaae102ce8513144dd400beb9f",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/002352_顺丰控股_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "4c6770e114c07d2100324fadd17bf2446150e783162d41bb1f34f9cf1f9f1034",
+      "sha256": "58cfc89c0b9fca6a277c2a291619a9a3ca1ad1038588be0d0233f22b7b8c553c",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/002352_顺丰控股_90d.txt",
-      "bytes": 70535,
-      "sha256": "c162c8d394a14f8ecb8b517aff5cb8a720857c14de207d08af07655bc1c6cb7f",
+      "bytes": 70532,
+      "sha256": "caf3d1aee45c643532c62e22a9725364ddfc1eb10bcd0b17e9a198f087942dd8",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/300124_汇川技术_kline_90d.csv",
-      "bytes": 7035,
-      "sha256": "7c2aca41b22bb45a21769aef40b3337d128e37fe909c83637d39d07753cfa236",
+      "bytes": 7033,
+      "sha256": "5391a804c030f2c3c93266457affc8aff8ed87db8c8559733c829d6eaf96b1d3",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/300124_汇川技术_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "a612c26b5e4fd4c088b6f988bfa72d941b80c9a7c15a51aaf7bb36369b21362f",
+      "sha256": "d33889cd87b1b423bcaeff139b00a31d0b9b3d7a93d8a38a9456c572a4909826",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/300124_汇川技术_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "cb97e837578f5826bb7d06d879c43e9bd7fcc99af11f38c660b42f544096992d",
+      "sha256": "60b7aa68f9e149ad185d1ee58adee968b4575667e29b8fd751621d2ccc1e7ab9",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/300124_汇川技术_90d.txt",
-      "bytes": 70746,
-      "sha256": "1cac3efcd48dc016901a59c4b3624d1ea48b55d1f62bdfd0de233e8627ee7756",
+      "bytes": 70744,
+      "sha256": "5c1235bb6aa581f5f80afe5972e4caaaab768b1ee771180cc45e418ac10e5865",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/300760_迈瑞医疗_kline_90d.csv",
-      "bytes": 7333,
-      "sha256": "c5152c8c0b490903d42df81441c8b507f969581e259d9b188c79e1847f0733cf",
+      "bytes": 7330,
+      "sha256": "dcc85c38bbd9c05e95333343cbb972c3289099d160163fa882696d603dbe1ba1",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/300760_迈瑞医疗_chip_warmup_209d.csv",
       "bytes": 9239,
-      "sha256": "bf641f11cdb0dcb07e9297b43f496521a2172b1fc765c75a72fdd18ece32a399",
+      "sha256": "88cabbb0738612a840878e3be6d10eda8f7b89e94886c439e1d5a5ef9598bb3b",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/300760_迈瑞医疗_volume_warmup_5d.csv",
-      "bytes": 104,
-      "sha256": "731421114087d7e173102ff056b39d5f75e39b27ab46ff184e8b7251825293d9",
+      "bytes": 103,
+      "sha256": "3329e9221a833aed208160da982e3d4b1766704c5442710a292e07de17e57df7",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/300760_迈瑞医疗_90d.txt",
-      "bytes": 72551,
-      "sha256": "e2d245c4bc417f26322ae93b096dbca288720e3761b5a5b09dbb7c18bdea265d",
+      "bytes": 72548,
+      "sha256": "0e9a730593b5a3513ce4eab4a6680edb7b0c2d79e3cc00000099b53a68c5e5d5",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/600362_江西铜业_kline_90d.csv",
-      "bytes": 7059,
-      "sha256": "095d802602079b21429fb523e0e1703f4dbe5f8efa173a47bbcd27f000d8a984",
+      "bytes": 7057,
+      "sha256": "0e5d0d6f6f2aac08d72bf304e7d36be3a16182327c44c16d53690798ba40f068",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/600362_江西铜业_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "2be3f042000c82bc1853fb845e54931bfa04ddce801e9043acf742bcc764c8db",
+      "sha256": "69b3e4d37e4ecc301f897533a3cfec85e356a2051f66f06b253da2ff0f54cb5b",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/600362_江西铜业_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "7a1d6742f523be7863ed89bc59dbd21afec90a4c02efec72ff63ad43743f49a7",
+      "sha256": "25ebf71500941b4a7cf1dab7c1623622fcce8e3cc1ec1a78e5928b5e4029ddf0",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/600362_江西铜业_90d.txt",
-      "bytes": 70778,
-      "sha256": "d9031efa05a14d1c06f78a80191df59814a3646f59a899bb7c30e763d0afa2dc",
+      "bytes": 70775,
+      "sha256": "1f1a4fe1d5afbd98bb522deb2b01fe0ea363f910db001017f1b500bbfff5968e",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/600398_海澜之家_kline_90d.csv",
-      "bytes": 6589,
-      "sha256": "e0c17025f45061f57cde7187e3c751e769c22a343f443fe44715de83ef8bc31b",
+      "bytes": 6587,
+      "sha256": "9b18529547f212d756ae5ab0d68e256e4a1efc263b359c5de3e849e924d1d71b",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/600398_海澜之家_chip_warmup_209d.csv",
       "bytes": 7567,
-      "sha256": "fbad280e6ae22be537e6fa2f56cca06d576534ecd031608ab7e7acb1997ed855",
+      "sha256": "47d8cbea208b2c3c4c0d1bfed3bc2ec1949ec20e3e1cb6cebb73929f75fce7f9",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/600398_海澜之家_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "677a0d3113368d0baa31b7fc001fc601369eb541a006cfee473c5713a19f99d2",
+      "sha256": "836981d5c81412af485e1e980323b87d8d2ecf1e8a1ad20f26f61b92265c0f1a",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/600398_海澜之家_90d.txt",
-      "bytes": 68297,
-      "sha256": "c92bc465bc86773f8238f484d0fed96929700ee160168f105f7bdd4642cac7f9",
+      "bytes": 68295,
+      "sha256": "2fd091fc9cca9f8111dd4a0da8caea43e6029e5d95cb056c2a51a13588673288",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/600690_海尔智家_kline_90d.csv",
-      "bytes": 6990,
-      "sha256": "82ffa8704a7579fc34cb527358a128aea4b5fe2b1305664a7c7a287f8513fda2",
+      "bytes": 6991,
+      "sha256": "264d61595cd4dd9bc3b794c092ca0b0a001b2571719abdfccf67915f79aad393",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/600690_海尔智家_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "f3f40af60e69da7bdbd247fbeed82d5921a73feb138913ac4c8e7c0ae4caf084",
+      "sha256": "42894c111144a90d0f6121aab65dfd2c9317862349bdd64c2248d8d3f667a2cc",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/600690_海尔智家_volume_warmup_5d.csv",
       "bytes": 107,
-      "sha256": "253f0ef6981ac4a83d198a05de2910a97af3fac420a6543e6bc0e47cee399d7b",
+      "sha256": "831d3f2f3a3e17e4fc1682e2a5f958bd85a2c7871b626963250c1d07fc3b9d86",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/600690_海尔智家_90d.txt",
-      "bytes": 70784,
-      "sha256": "3d27bc67f820afd0ff6f551fb721c0f3633a31cec86210c77aaecbab1a93e0dd",
+      "bytes": 70785,
+      "sha256": "8ac789f556b54279c26612690e4d32a0a30c628a6567c902b88d06eb7703534b",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/600863_华能蒙电_kline_90d.csv",
-      "bytes": 6731,
-      "sha256": "ed260bf95421422790f6ce3bae83cf3d9a715e9c9f3cbb287fdfb88fdc774ee0",
+      "bytes": 6728,
+      "sha256": "0acf766234e01598a503e61d3feeb49c7e9df6e3cb476601ef1f9735e13e6cc7",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/600863_华能蒙电_chip_warmup_209d.csv",
       "bytes": 7567,
-      "sha256": "0228b0c2f624681acf87e7f896b658d74a0ab3f7174153de6a7eb7ae00cf1d28",
+      "sha256": "d594c246dfcd03887bc4ce3013eb0dea102a305bc69bfb03fff7075b59a44b16",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/600863_华能蒙电_volume_warmup_5d.csv",
-      "bytes": 110,
-      "sha256": "57a5a77fcc2e01ddfca2d24793763dfc75f6c5560ac2c75700af25dcbcd2c6bc",
+      "bytes": 111,
+      "sha256": "1b51b11145cfc31eeaa74709de42a7c12f8f1769775f5fb5328380cd75d79c3d",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/600863_华能蒙电_90d.txt",
-      "bytes": 68811,
-      "sha256": "06129bdd07910348d849041bee9ef9c9152c335df823d824792fa7aa024a1364",
+      "bytes": 68809,
+      "sha256": "511d02e0b35873256b82aa7929d90d07134df35a0fa951786ab6ba21a4bb7ec3",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/601138_工业富联_kline_90d.csv",
-      "bytes": 7161,
-      "sha256": "3ba6eaa67f0fe3b4fa2a8e01d05323737acb3071526d4bdc6af78485dc55aac6",
+      "bytes": 7158,
+      "sha256": "05a39b8596cb3aba0788be523bc92b77ff98987d198752ce4a97f99ed5ccbc55",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/601138_工业富联_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "04f46710491e586b6126e165626febd16a70accc616f7677b504b664a6ce0612",
+      "sha256": "467f8f1b82c7982ac4f571be239cc04b2fb3111cce31b5a9e39537af1de0d127",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/601138_工业富联_volume_warmup_5d.csv",
       "bytes": 112,
-      "sha256": "0411fe00f9e3189e0ce5f53a11b7e48d0a7c82a6bd35f76d09a699d994655a10",
+      "sha256": "722432645af6b7782ae89e108333ab87c2a2dfc73d2f5b8d1bbd53d4e478f83c",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/601138_工业富联_90d.txt",
-      "bytes": 71229,
-      "sha256": "325872a3505b2ad2a5115253770c44e146e7c95f18c15fe88e06b5ce19b7767f",
+      "bytes": 71225,
+      "sha256": "f99b814b64d62e2ab7db8c94012eae570b44a43d5bbc262709ae129fc4974623",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/601600_中国铝业_kline_90d.csv",
-      "bytes": 6880,
-      "sha256": "e413fa6a4e940cc412a2e0678bf513c8c4060f5c19276595a7b4557a6ae47a46",
+      "bytes": 6874,
+      "sha256": "2e39c5a0da82926b5c43a66aefb91dc4ce2732bfdd0c661d5d8e6b512b86f200",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/601600_中国铝业_chip_warmup_209d.csv",
-      "bytes": 8067,
-      "sha256": "9b0e329155ab7ff443d4e3739fb74b66ddc9ff4cab88eceb88924bf3ead05af5",
+      "bytes": 8071,
+      "sha256": "f17cf0ee2fe29144cfea69a160e419d866e161d0de13250b08825e38caedeaff",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/601600_中国铝业_volume_warmup_5d.csv",
       "bytes": 112,
-      "sha256": "af4fb9e21b57a45d3de28fdb76a93e4a20bad8e1d6f86a64b212d0aca80846cd",
+      "sha256": "fef46d2e83043c2a9519c5818aa8ef8f7fa411f8b57418411824fe2f222bd4e7",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/601600_中国铝业_90d.txt",
-      "bytes": 69960,
-      "sha256": "4ab327b2b0b302af619528c6bd6db44cc1b5e096b30d0c67692ec890fe218b17",
+      "bytes": 69938,
+      "sha256": "805cb1a6629f976baf5e723810caabdfce362b4e1aff97bfacfc220ee3eb3556",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/601899_紫金矿业_kline_90d.csv",
-      "bytes": 7154,
-      "sha256": "f079370cfd8b85144813aa481cc61f67c74a9905e6c92be5db0c10d261ea2dfc",
+      "bytes": 7152,
+      "sha256": "a4901bdd2660008e12fa1bdf3667e41d5054ba1208193cb26fce14f7a5043d30",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/601899_紫金矿业_chip_warmup_209d.csv",
       "bytes": 8403,
-      "sha256": "4724929b3dd2b6d94dfa75c3fb7392671d33dcc3555d207ae461bf366fddd1ec",
+      "sha256": "2c0c900a98b8e7861e088c464c2746c0235fe05ae5f79f1a22b6eb9a97a283c0",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/601899_紫金矿业_volume_warmup_5d.csv",
       "bytes": 112,
-      "sha256": "3b51da7860d7de028b16340de1a68e773baa6eb5b0af1e7f15101c878277153d",
+      "sha256": "e993f3a1d86def0441735bef4e7557fe70fc92d48874473456de1d4805c94939",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/601899_紫金矿业_90d.txt",
-      "bytes": 71097,
-      "sha256": "e5422ed2008880910c6515f5f8ae9d89fc702e6dae52fbca3a1b5cedf1109ac6",
+      "bytes": 71094,
+      "sha256": "181808db2e09ce8b9a1ede6118c636cf997ce4806ea38de73563454d8652a658",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/601988_中国银行_kline_90d.csv",
-      "bytes": 6752,
-      "sha256": "145df5d29097339891db9ebcfdf29ba91a31d7f99bf8d1f539027f056bb77bc7",
+      "bytes": 6754,
+      "sha256": "592ad40ecf2110dcb73d00d779164c3344e63d69104122329f697358957058de",
       "rows": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     },
     {
       "path": "data/eastmoney/601988_中国银行_chip_warmup_209d.csv",
       "bytes": 7567,
-      "sha256": "97f1da56e5fb66c8f968557da4a22076fcb3f65af80be981d9feecc875acb885",
+      "sha256": "3a25d6c8353ed57aa5fa08ab167bbd324cc7a733766d1ef330176fcf79e92dd2",
       "rows": 209,
-      "first_date": "2025-07-01",
-      "last_date": "2026-05-13"
+      "first_date": "2025-07-02",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/eastmoney/601988_中国银行_volume_warmup_5d.csv",
       "bytes": 112,
-      "sha256": "3d8cdfd94cc9b85b0b5584827e139ef98bac31879430930dd89123b941879cec",
+      "sha256": "16b6992e900734fbce42fd946b5911421dd3e345548b7169d7d8c16652bcce9d",
       "rows": 5,
-      "first_date": "2026-05-07",
-      "last_date": "2026-05-13"
+      "first_date": "2026-05-08",
+      "last_date": "2026-05-14"
     },
     {
       "path": "data/daily_text/601988_中国银行_90d.txt",
-      "bytes": 68987,
-      "sha256": "99c4252c1fd9b6b7d5b465c15bad2e353c4b304c6b089f986b8b6bb708b078a4",
+      "bytes": 68988,
+      "sha256": "a0833fb6bcdd7be37d9050b22ddb431f0fe9189febe5c62ae3713ee90d47c751",
       "daily_blocks": 90,
-      "first_date": "2026-05-14",
-      "last_date": "2026-09-17"
+      "first_date": "2026-05-15",
+      "last_date": "2026-09-18"
     }
   ],
   "supplemental_inputs": {
