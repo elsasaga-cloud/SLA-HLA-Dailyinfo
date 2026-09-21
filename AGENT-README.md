@@ -12,7 +12,7 @@
 | 仓库路径 | `/home/user/SLA-HLA-Dailyinfo`（github.com/elsasaga-cloud/SLA-HLA-Dailyinfo） |
 | 当前主分支 | `main` |
 | 工作分支 | `arena/01a0424e-sla-hla-dailyinfo`（本会话固定绑定，所有提交只推送到此分支） |
-| 最后更新时间 | 2026-09-21 15:38（Asia/Shanghai） |
+| 最后更新时间 | 2026-09-21 15:09（Asia/Shanghai） |
 | 最后更新由 | 对话 19：09-21 双数据集滚动（新浪深市首根事故兜底） |
 
 ---
