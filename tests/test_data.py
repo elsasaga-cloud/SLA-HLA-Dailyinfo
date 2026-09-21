@@ -33,10 +33,10 @@ class DataValidationTests(unittest.TestCase):
             self.assertEqual(90, len(target))
             self.assertEqual(209, len(warmup))
             self.assertEqual(5, len(volume_seed))
-            self.assertEqual("2026-05-15", target[0]["date"])
-            self.assertEqual("2026-09-18", target[-1]["date"])
-            self.assertEqual("2025-07-02", warmup[0]["date"])
-            self.assertEqual("2026-05-14", warmup[-1]["date"])
+            self.assertEqual("2026-05-18", target[0]["date"])
+            self.assertEqual("2026-09-21", target[-1]["date"])
+            self.assertEqual("2025-07-03", warmup[0]["date"])
+            self.assertEqual("2026-05-15", warmup[-1]["date"])
             self.assertEqual(
                 [row["date"] for row in warmup[-5:]],
                 [row["date"] for row in volume_seed],
