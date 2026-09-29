@@ -2,8 +2,19 @@
 """Fetch source K-lines for the requested stocks and rebuild outputs.
 
 The fetch uses one EastMoney endpoint and the same fields/method for all
-stocks.  It retrieves 299 sessions: 209 warm-up sessions plus the requested
-90 sessions.  Standard-library Python only.
+stocks.  It retrieves 459 sessions per stock (209 warm-up sessions plus the
+requested 250 sessions) through four lmt-bounded windows anchored at the
+same end date, keeping every single request small enough to stay reliable:
+
+- A1: 11 fields, lmt=160 (most recent 160 requested sessions)
+- A2: 11 fields, lmt=90  (earliest 90 requested sessions)
+- B1: 7 fields,  lmt=160 (most recent 160 warm-up sessions)
+- B2: 7 fields,  lmt=49  (earliest 49 warm-up sessions)
+
+The windows of a common end date are nested, so the segments concatenate
+without overlap.  The 7-field responses and the 11-field responses must
+agree on the shared date windows, which is verified before storing.
+Standard-library Python only.
 """
 
 from __future__ import annotations
@@ -49,18 +60,31 @@ FIELDS = (
     "change_amount",
     "turnover_rate_pct",
 )
+FIELDS7 = (
+    "date",
+    "open",
+    "close",
+    "high",
+    "low",
+    "volume_lots",
+    "turnover_rate_pct",
+)
+FIELDS2_11 = "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61"
+FIELDS2_7 = "f51,f52,f53,f54,f55,f56,f61"
 
 
-def fetch(code: str, market: str, end_date: str) -> list[list[str]]:
+def fetch_window(
+    code: str, market: str, end_date: str, lmt: int, fields2: str
+) -> list[list[str]]:
     query = urllib.parse.urlencode(
         {
             "secid": f"{market}.{code}",
             "fields1": "f1,f2,f3,f4,f5,f6",
-            "fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61",
+            "fields2": fields2,
             "klt": "101",
             "fqt": "0",
             "end": end_date,
-            "lmt": "299",
+            "lmt": str(lmt),
         }
     )
     request = urllib.request.Request(
@@ -71,8 +95,8 @@ def fetch(code: str, market: str, end_date: str) -> list[list[str]]:
     if payload.get("rc") != 0 or not payload.get("data"):
         raise RuntimeError(f"EastMoney returned no data for {code}: {payload!r}")
     rows = [line.split(",") for line in payload["data"]["klines"]]
-    if len(rows) != 299 or any(len(row) != len(FIELDS) for row in rows):
-        raise RuntimeError(f"expected 299 complete sessions for {code}, got {len(rows)}")
+    if len(rows) != lmt or any(len(row) != len(fields2.split(",")) for row in rows):
+        raise RuntimeError(f"expected {lmt} complete sessions for {code}, got {len(rows)}")
     return rows
 
 
@@ -84,10 +108,8 @@ def write_csv(path: Path, fieldnames: tuple[str, ...], rows: list[dict[str, str]
         writer.writerows({field: row[field] for field in fieldnames} for row in rows)
 
 
-def store(code: str, name: str, values: list[list[str]]) -> None:
-    rows = [dict(zip(FIELDS, row, strict=True)) for row in values]
-    warmup, requested = rows[:209], rows[209:]
-    if len(warmup) != 209 or len(requested) != 90:
+def store(code: str, name: str, requested: list[dict[str, str]], warmup: list[dict[str, str]]) -> None:
+    if len(requested) != 250 or len(warmup) != 209:
         raise AssertionError("unexpected split")
     stem = f"{code}_{name}"
     write_csv(
@@ -95,7 +117,7 @@ def store(code: str, name: str, values: list[list[str]]) -> None:
         ("date", "open", "close", "high", "low", "turnover_rate_pct"),
         warmup,
     )
-    write_csv(DATA / f"{stem}_kline_90d.csv", FIELDS, requested)
+    write_csv(DATA / f"{stem}_kline_250d.csv", FIELDS, requested)
     write_csv(
         DATA / f"{stem}_volume_warmup_5d.csv",
         ("date", "volume_lots"),
@@ -115,7 +137,20 @@ def main() -> None:
         parser.error("--end-date must be YYYYMMDD")
 
     for code, name, market in STOCKS:
-        store(code, name, fetch(code, market, args.end_date))
+        # Four lmt-bounded windows anchored at the same end date.  Windows
+        # with a common end date are nested: the lmt=160 responses hold the
+        # most recent 160 sessions and the smaller lmt responses hold the
+        # earliest ones, so each pair concatenates without overlap.
+        a1 = fetch_window(code, market, args.end_date, 160, FIELDS2_11)
+        a2 = fetch_window(code, market, args.end_date, 90, FIELDS2_11)
+        b1 = fetch_window(code, market, args.end_date, 160, FIELDS2_7)
+        b2 = fetch_window(code, market, args.end_date, 49, FIELDS2_7)
+        if [row[0] for row in a1] != [row[0] for row in b1]:
+            raise RuntimeError(f"date mismatch between 11-field and 7-field windows for {code}")
+        requested = [dict(zip(FIELDS, row, strict=True)) for row in a2 + a1]
+        warmup_rows = b2 + b1
+        warmup = [dict(zip(FIELDS7, row, strict=True)) for row in warmup_rows]
+        store(code, name, requested, warmup)
         print(f"fetched {code} {name}")
 
     subprocess.run(

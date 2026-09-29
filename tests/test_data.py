@@ -22,7 +22,7 @@ class DataValidationTests(unittest.TestCase):
     def test_source_counts_dates_and_ohlc(self) -> None:
         for stock in GENERATOR.STOCKS:
             target = GENERATOR.read_rows(
-                GENERATOR.DATA / f"{stock.stem}_kline_90d.csv"
+                GENERATOR.DATA / f"{stock.stem}_kline_250d.csv"
             )
             warmup = GENERATOR.read_rows(
                 GENERATOR.DATA / f"{stock.stem}_chip_warmup_209d.csv"
@@ -30,13 +30,16 @@ class DataValidationTests(unittest.TestCase):
             volume_seed = GENERATOR.read_rows(
                 GENERATOR.DATA / f"{stock.stem}_volume_warmup_5d.csv"
             )
-            self.assertEqual(90, len(target))
+            self.assertEqual(250, len(target))
             self.assertEqual(209, len(warmup))
             self.assertEqual(5, len(volume_seed))
-            self.assertEqual("2026-05-25", target[0]["date"])
+            self.assertEqual("2025-09-17", target[0]["date"])
             self.assertEqual("2026-09-29", target[-1]["date"])
-            self.assertEqual("2025-07-10", warmup[0]["date"])
-            self.assertEqual("2026-05-22", warmup[-1]["date"])
+            self.assertEqual(
+                "2024-10-31" if stock.code == "600863" else "2024-11-12",
+                warmup[0]["date"],
+            )
+            self.assertEqual("2025-09-16", warmup[-1]["date"])
             self.assertEqual(
                 [row["date"] for row in warmup[-5:]],
                 [row["date"] for row in volume_seed],
@@ -59,7 +62,7 @@ class DataValidationTests(unittest.TestCase):
         stock = next(stock for stock in GENERATOR.STOCKS if stock.code == "600398")
         rows = GENERATOR.read_rows(
             GENERATOR.DATA / f"{stock.stem}_chip_warmup_209d.csv"
-        ) + GENERATOR.read_rows(GENERATOR.DATA / f"{stock.stem}_kline_90d.csv")
+        ) + GENERATOR.read_rows(GENERATOR.DATA / f"{stock.stem}_kline_250d.csv")
         expected = {
             "2026-07-28": (74.28, 5.88, 5.50, 6.21, 5.68, 6.12),
             "2026-08-06": (74.36, 5.90, 5.51, 6.24, 5.69, 6.14),
@@ -80,7 +83,7 @@ class DataValidationTests(unittest.TestCase):
             )
             self.assertEqual(wanted, tuple(round(value, 2) for value in actual))
 
-    def test_text_outputs_have_90_exactly_formatted_blocks(self) -> None:
+    def test_text_outputs_have_250_exactly_formatted_blocks(self) -> None:
         required = (
             "股票数据： ",
             "今开: ",
@@ -97,20 +100,20 @@ class DataValidationTests(unittest.TestCase):
         )
         for stock in GENERATOR.STOCKS:
             text = (
-                GENERATOR.OUTPUT / f"{stock.stem}_90d.txt"
+                GENERATOR.OUTPUT / f"{stock.stem}_250d.txt"
             ).read_text(encoding="utf-8")
-            self.assertEqual(90, text.count("Date: "))
-            self.assertEqual(90, text.count(f"股票数据： {stock.name} {stock.code}"))
+            self.assertEqual(250, text.count("Date: "))
+            self.assertEqual(250, text.count(f"股票数据： {stock.name} {stock.code}"))
             for marker in required:
-                self.assertEqual(90, text.count(marker), marker)
+                self.assertEqual(250, text.count(marker), marker)
             for period in (5, 10, 20, 30, 40, 50, 60, 70, 80, 90):
-                self.assertEqual(90, text.count(f"MA{period}: "), f"MA{period}")
+                self.assertEqual(250, text.count(f"MA{period}: "), f"MA{period}")
             self.assertNotIn("N/A", text)
             self.assertNotIn("nan", text.lower())
             self.assertNotIn("none", text.lower())
 
     def test_supplied_2026_08_21_block(self) -> None:
-        text = (GENERATOR.OUTPUT / "600398_海澜之家_90d.txt").read_text(
+        text = (GENERATOR.OUTPUT / "600398_海澜之家_250d.txt").read_text(
             encoding="utf-8"
         )
         start = text.index("Date: 2026-08-21")
@@ -156,7 +159,7 @@ MA5: 5.94 (上升), MA10: 6.00 (下降), MA20: 6.07 (上升), MA30: 6.00 (上升
         self.assertEqual(expected, block)
 
     def test_wuliangye_2026_08_21_core_fields(self) -> None:
-        text = (GENERATOR.OUTPUT / "000858_五粮液_90d.txt").read_text(
+        text = (GENERATOR.OUTPUT / "000858_五粮液_250d.txt").read_text(
             encoding="utf-8"
         )
         block = text[text.index("Date: 2026-08-21") :]
