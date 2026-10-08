@@ -194,7 +194,7 @@ SLA-HLA-Dailyinfo/
 - **已踩过的坑**：除权除息日 no-CA 断言（chg==close−prev）必炸（09-17 002352 现金分红 ≈0.47 元/股：chg +0.47 与 pct +1.55%、振幅 2.44% 全部精确对应参考昨收 30.28=30.75−0.47，原始价序列连续）  
   **解决方案**：豁免股用振幅+pct 联合反推参考价交叉校验；原始价格照源存储，metadata snapshot note 披露
 
-- **已踩过的坑**：沙箱被外部重置（git HEAD 回退、工作区呈脏状态；已发生 24 次，第 16/17/18/19/20/21/22/23/24 次均为全新单分支浅克隆形态。**第 16 次形态不同：全新单分支浅克隆**——本地无会话分支对象、无 origin/arena 跟踪引用，无参 `git fetch origin` 只取 main，FETCH_HEAD≠会话分支）  
+- **已踩过的坑**：沙箱被外部重置（git HEAD 回退、工作区呈脏状态；已发生 25 次，第 16/17/18/19/20/21/22/23/24/25 次均为全新单分支浅克隆形态。**第 16 次形态不同：全新单分支浅克隆**——本地无会话分支对象、无 origin/arena 跟踪引用，无参 `git fetch origin` 只取 main，FETCH_HEAD≠会话分支）  
   **解决方案**：`git fetch origin <分支名>` 显式取回 → `git diff --name-only FETCH_HEAD` 预校验（仅 3 个陈旧文档）→ `git reset --hard FETCH_HEAD` → 设置 tracking；/tmp 被清但证据均已入库，零损失
   **解决方案**：`git ls-remote origin arena/01a0424e-sla-hla-dailyinfo` 确认远端 tip → `git fetch origin arena/01a0424e-sla-hla-dailyinfo` → `git diff FETCH_HEAD --stat` 验证工作区与远端内容差异（应为 0）→ 向用户说明影响后 `git reset --hard FETCH_HEAD`；该 reset 为纯元数据对齐、零内容损失
   **第 25 次实测补充（2026-10-08）**：磁盘数据比远端新（上轮未推/未提交）时，plain `git diff FETCH_HEAD` 会把磁盘上存在但旧 index 没有的新文件误报为 D（假差异 14 万行）；正解=临时 index 内容级预校验：`GIT_INDEX_FILE=/tmp/idx git read-tree FETCH_HEAD && git add -A && git diff --cached FETCH_HEAD`（=0 才 reset --hard）
