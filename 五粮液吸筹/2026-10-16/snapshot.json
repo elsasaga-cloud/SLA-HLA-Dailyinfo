@@ -209,7 +209,14 @@
       "大宗交易明细",
       "龙虎榜",
       "Level-2/ETF 无数据源已声明"
-    ]
+    ],
+    "scorecard_final": {
+      "tech_check": 21,
+      "tech_tri": 6,
+      "hard_disclosure_x": 2,
+      "aux_score_norm": 88
+    },
+    "operation_mapping": "hold-watch / no entry; await 10-28 households + volume close above 72.6"
   },
   "battery_v2": {
     "adx14": 14.2,
@@ -279,7 +286,7 @@
     "run_ts": "2026-10-16T11:00:00+08:00",
     "aux_score_raw": 12.5,
     "aux_score_wsum": 15.5,
-    "aux_score_norm": 81,
+    "aux_score_norm": 88,
     "s2_batch_price": {
       "pentai_low_7m": 730,
       "bai_rong_0806": 745,
@@ -318,6 +325,38 @@
     "trigger": {
       "batch_price_fail_below": 770,
       "household_switch": "2026-10-28"
+    },
+    "s4_resolved": {
+      "lhb_warning": "RESOLVED: 2026-01-29 limit-up-day distribution data, irrelevant now; no LHB in last 8.5 months",
+      "block_trades": {
+        "total_3m_to_0709_yi": 4.66,
+        "detail_0518": {
+          "yi": 1.9,
+          "discount_pct": -6.45,
+          "buyer": "机构专用"
+        },
+        "detail_0709": {
+          "wan": 202,
+          "discount_pct": 0,
+          "buyer": "机构专用"
+        },
+        "since_mid_july": "none reported, recheck Run#2"
+      }
     }
+  },
+  "battery_v3": {
+    "hurst_full250": 0.547,
+    "hurst_base60d": 0.559,
+    "hurst_rolling": {
+      "2026-04-02": 0.619,
+      "2026-05-06": 0.574,
+      "2026-06-03": 0.643,
+      "2026-07-02": 0.444,
+      "2026-07-30": 0.581,
+      "2026-08-27": 0.451,
+      "2026-09-24": 0.527
+    },
+    "verdict": "order-returning, below strong-control 0.6",
+    "method_count_scored": 34
   }
 }
