@@ -1,13 +1,13 @@
 {
-  "as_of": "2026-10-19",
+  "as_of": "2026-10-20",
   "source": "Sina CN_MarketDataService.getKLineData",
   "scale_minutes": 15,
   "volume_unit": "lots (Sina shares divided by 100)",
   "amount_unit": "yuan",
   "sessions": 21,
   "historical_sessions": 20,
-  "first_session": "2026-09-11",
-  "latest_session": "2026-10-19",
+  "first_session": "2026-09-14",
+  "latest_session": "2026-10-20",
   "slot_labels": [
     "09:45",
     "10:00",
@@ -102,353 +102,353 @@
   "files": [
     {
       "path": "data/15min/000651_格力电器/000651_15min_raw.csv",
-      "bytes": 28489,
-      "sha256": "d51af34dca8b5798c75105c13bedc912531a8655574ffdddd0061aec67df23a8"
+      "bytes": 28495,
+      "sha256": "3afc3e93401d00c4bd251f7d64fd742b75e0019882a1db6ab809f124466f05a6"
     },
     {
       "path": "data/15min/000651_格力电器/000651_15min_分析报告.txt",
-      "bytes": 14555,
-      "sha256": "8e0a321760c230a37c82ecc1bc36937d65c9e1f73999819a55e0767f2354b1b2"
+      "bytes": 15463,
+      "sha256": "0353e5463551c8f66f90028359492422f5814b3310bfa52a4523a2f7ade1cc67"
     },
     {
       "path": "data/15min/000651_格力电器/000651_day_summary.csv",
-      "bytes": 5526,
-      "sha256": "b884b667699a2fc294c8e09b2fa3dc2e568a4ba57d5a1327b4597d338e2b10e6"
+      "bytes": 5535,
+      "sha256": "ff22ab5e0ea0cdf5c8ec5c2a8bd107994ca5f113a12cb05bce66b2600ce14a78"
     },
     {
       "path": "data/15min/000651_格力电器/000651_异动预警.txt",
-      "bytes": 9600,
-      "sha256": "9be4daa302cf9d3829565addb3cf5501a751898b1b03493396bc4fa2aaf88fe5"
+      "bytes": 10469,
+      "sha256": "b631aa75f2a2bc992ceaa8b373ec2e77ec5c7f121c282967322526bdbfde974c"
     },
     {
       "path": "data/15min/000651_格力电器/成交量维度_操作指引.txt",
-      "bytes": 1868,
-      "sha256": "f02f2d73c8f14ded6435a91f47302094153ba500f849897468a30208faa55a46"
+      "bytes": 1869,
+      "sha256": "37e2eddf9980ef48bce0ba5240356f24f6068e034721cd9a2e1d0b3d86bbbcd5"
     },
     {
       "path": "data/15min/000807_云铝股份/000807_15min_raw.csv",
-      "bytes": 28555,
-      "sha256": "3ada8e35374380f1f0cfcb93ec3f8d4f2f55910739b5a89fb0d8a9fb707bc5f2"
+      "bytes": 28547,
+      "sha256": "5d3171fe44be48ba6a02cf19aba9ed9ff54a79e629c6f61094db84efd735d702"
     },
     {
       "path": "data/15min/000807_云铝股份/000807_15min_分析报告.txt",
-      "bytes": 14383,
-      "sha256": "a0796337dd1d6e08e3c903a1459f3ceecbbb260b422902f318a8d38926344e36"
+      "bytes": 14792,
+      "sha256": "97aa0d1ab2fe44555530e1a0fbe1c5838d165e6560f1c543bca5062fa22e1414"
     },
     {
       "path": "data/15min/000807_云铝股份/000807_day_summary.csv",
-      "bytes": 5609,
-      "sha256": "b4c82d8acde84250dac085de7bab7f45a7d3c2fe0600dc8ed67e4bfd89785465"
+      "bytes": 5605,
+      "sha256": "b8763a99629fd62c4b135b49ce2af46e17e29c05ea1e57ddb28e2830673691e2"
     },
     {
       "path": "data/15min/000807_云铝股份/000807_异动预警.txt",
-      "bytes": 9376,
-      "sha256": "fb26c18b9264130b6b5d5a916c8dc52f6b85acc621e2e7118f7c8ab47f0ae57f"
+      "bytes": 9804,
+      "sha256": "37813a03f33333539ccbdc86ccaeb06089628c94de31bee832cb47dd4ff6f18b"
     },
     {
       "path": "data/15min/000807_云铝股份/成交量维度_操作指引.txt",
       "bytes": 1866,
-      "sha256": "04de3656b0e41cc5d1a302293bd2ddf73146c0de25cae890d69cbe6d58d38438"
+      "sha256": "c4d71002536dc24b9fc261042604f6140f1bd72478237547f67d66d7437a0692"
     },
     {
       "path": "data/15min/000858_五粮液/000858_15min_raw.csv",
-      "bytes": 28429,
-      "sha256": "c0a796fa662f5078915ca7d55ec194df019881ddf5c249ae85a11a83f79d2a54"
+      "bytes": 28432,
+      "sha256": "8ae9e7793e257998ed28ad3278cd3ea3533ccc1c0d92ac85a7fab42414cd71b4"
     },
     {
       "path": "data/15min/000858_五粮液/000858_15min_分析报告.txt",
-      "bytes": 13827,
-      "sha256": "a553ef6f235a9772610cd433132f94a01277354968afc883c89bfdbc831e7deb"
+      "bytes": 13404,
+      "sha256": "b33ce4e97f76243986be06cd4e52fab2172c76fd8ae9719aa18ceed21c7fc6bf"
     },
     {
       "path": "data/15min/000858_五粮液/000858_day_summary.csv",
-      "bytes": 5393,
-      "sha256": "5ad346a6cccffd3354bccee2e1a539baa2ab59edc1fcf7562daa32c57d9eb5f2"
+      "bytes": 5392,
+      "sha256": "d168d3f3eef8005bfc9f038500dfb49d53a814afedf33c8977ee3b61c29e7fe5"
     },
     {
       "path": "data/15min/000858_五粮液/000858_异动预警.txt",
-      "bytes": 8763,
-      "sha256": "e026a913144cd2cffaf40f71d34e4095fb9ce5c05f323649718bf744ff42074e"
+      "bytes": 8338,
+      "sha256": "ec17a8d8c592a98646fea68dd642ebe6fafaa891ac5f89e70489ee0e2f22716d"
     },
     {
       "path": "data/15min/000858_五粮液/成交量维度_操作指引.txt",
-      "bytes": 1868,
-      "sha256": "3cc8db81c6b1a54c6d2f143b924aa4013f0502d0b076948b0fc04a198e65e2f2"
+      "bytes": 1867,
+      "sha256": "3d7550f62c33114c3320aea3d7998e6809696a98901d3e8cc0f80dcc25d8e13d"
     },
     {
       "path": "data/15min/002352_顺丰控股/002352_15min_raw.csv",
-      "bytes": 27764,
-      "sha256": "b10f254f79ba03d4d9871ec5f37ea6378b2957d829d47192ffe118febe4779fb"
+      "bytes": 27752,
+      "sha256": "cab22a5e70fb6c887b48b003a8ddabdfc9ddbec4c6e7b2ef35ebb8bd8770a0eb"
     },
     {
       "path": "data/15min/002352_顺丰控股/002352_15min_分析报告.txt",
-      "bytes": 14434,
-      "sha256": "c0f3f60e7c390802e573dbcae82410909295f8958f587fb76eff6e1c34cbc520"
+      "bytes": 14261,
+      "sha256": "8a13cb774a099e27a85c451c1aac089109e3cb22eec1b2ff8ff076352e4d3c18"
     },
     {
       "path": "data/15min/002352_顺丰控股/002352_day_summary.csv",
-      "bytes": 5305,
-      "sha256": "c4618d925d5c82459aa92f6fbbf7b623f52b999f6e1523d045227e851f90c0a3"
+      "bytes": 5306,
+      "sha256": "7871b4de91a701c38c3bfddfc923343fa0c31012efae39548e6deabab9076c97"
     },
     {
       "path": "data/15min/002352_顺丰控股/002352_异动预警.txt",
-      "bytes": 9434,
-      "sha256": "14f8d29071f5d8c5bd25ff9cddfc1089ecd493a2d6a4907e58ba7cf24351d864"
+      "bytes": 9264,
+      "sha256": "3d9886b6dee1acf905fd7f2ee5a0788524065256ba1d2d6965bbd236623ed9da"
     },
     {
       "path": "data/15min/002352_顺丰控股/成交量维度_操作指引.txt",
-      "bytes": 1879,
-      "sha256": "f540c9a617c1bf2dc9d556a56cb3d6827f5df649b651432e125923d704f7c8fb"
+      "bytes": 1870,
+      "sha256": "bdf6b09d8fd7b7d144523b31c098d49f45128209e5b1fa9bc5935cb054b2e369"
     },
     {
       "path": "data/15min/300124_汇川技术/300124_15min_raw.csv",
-      "bytes": 28478,
-      "sha256": "7ce26a447ba111fdcdb0608f5d41ce524e78054ae5c5963a348e60d8b9649a6c"
+      "bytes": 28485,
+      "sha256": "5844cc6c48b6141c01e8d84d5bf8ccdcba307bccf162bd926cde9a8666bd9e89"
     },
     {
       "path": "data/15min/300124_汇川技术/300124_15min_分析报告.txt",
-      "bytes": 15904,
-      "sha256": "0b2cd6f3a24499ec0294ff5b9e0dfeeb89b4f525103fe9875b9265c74cad6d99"
+      "bytes": 15657,
+      "sha256": "069f6945e6410a4e481772f5d7b430af992446b1c2050767d3a38d4b2be84f26"
     },
     {
       "path": "data/15min/300124_汇川技术/300124_day_summary.csv",
-      "bytes": 5540,
-      "sha256": "13d4e35ef9e0e7a4a97e14aa190b1861afca23e027c23dabde8730e3d7c7dd67"
+      "bytes": 5539,
+      "sha256": "35a838b06b362f75f37feead0021c1aab356525324140f87b13dc12d90c2bc16"
     },
     {
       "path": "data/15min/300124_汇川技术/300124_异动预警.txt",
-      "bytes": 10841,
-      "sha256": "c75fb858469da1ba5955f1eb347dc3265c5827d7959970f0a6ca03cf67c8d586"
+      "bytes": 10586,
+      "sha256": "e8617e2df8ca4a0b142d48ed1362d637a58b9108321003db1bad681939baa62b"
     },
     {
       "path": "data/15min/300124_汇川技术/成交量维度_操作指引.txt",
-      "bytes": 1862,
-      "sha256": "fe63b5546d7db7fa2cccd56633f1387e48b57f44daa74fd55491220e4e12c390"
+      "bytes": 1865,
+      "sha256": "81561c9b8389f6fd32501cd4872e231ad050402dc75e8367f2c4a6332c6e05a6"
     },
     {
       "path": "data/15min/300760_迈瑞医疗/300760_15min_raw.csv",
-      "bytes": 29498,
-      "sha256": "5d2023e157980d64fc5fc0f9d7404407f76580717df865cc578184e005c940fc"
+      "bytes": 29491,
+      "sha256": "cceb580ebf00bcefa8ffe66c485671087e15395ab3a02f05e5201783e91fc22c"
     },
     {
       "path": "data/15min/300760_迈瑞医疗/300760_15min_分析报告.txt",
-      "bytes": 13858,
-      "sha256": "783d77cd0bb7b7f0d4254f4c2aa90e5b5d5a106a65d8180bd5c6b22a0e11a5a8"
+      "bytes": 14179,
+      "sha256": "091ec7ad7a640b1e26ee478a658c9ae026976271009bf5e81c2c752b3733c22c"
     },
     {
       "path": "data/15min/300760_迈瑞医疗/300760_day_summary.csv",
-      "bytes": 5282,
-      "sha256": "c717449f3500df78fd72e0305f924005efa225a382c937fe1a4583afbcaa3b8c"
+      "bytes": 5284,
+      "sha256": "90c1945affe8d523186bc4c6680446506181689e91df9506da19780134d1f616"
     },
     {
       "path": "data/15min/300760_迈瑞医疗/300760_异动预警.txt",
-      "bytes": 8934,
-      "sha256": "212f4af0801e97be83602349c86ff80ce4bf1e1c3cbe3b6114dfc3d416d5a2b5"
+      "bytes": 9275,
+      "sha256": "4fcf711047293fa6b051ff9fb0610e46302cafe7f610f6e2ba3c48a9b27799b8"
     },
     {
       "path": "data/15min/300760_迈瑞医疗/成交量维度_操作指引.txt",
-      "bytes": 1868,
-      "sha256": "aff6788c6d9ddb82ffdd79c60c74fc3491b80988d24a8e22092edcbd39640dda"
+      "bytes": 1860,
+      "sha256": "703ee47493a5b21cbe71e5d6f5e347dab049d87876698acea7055d12490a5696"
     },
     {
       "path": "data/15min/600362_江西铜业/600362_15min_raw.csv",
-      "bytes": 28687,
-      "sha256": "4589c52d5222eb840b4580adb8c3b46275d686a5a3dbd76ceaafd8ea035914ee"
+      "bytes": 28671,
+      "sha256": "0231b4d8af4b67a3d3954a2d1c86eef47a9528c7ccfa65b55cc1815ac8eb8b23"
     },
     {
       "path": "data/15min/600362_江西铜业/600362_15min_分析报告.txt",
-      "bytes": 16692,
-      "sha256": "526a08fc4b737eec9fc47b026ba9ec79fd38f2debc8fe6cc4a0e4735ed768089"
+      "bytes": 16679,
+      "sha256": "e8576ca1fee6e94990f058e7ea930f5ebdf8a9b96c5769105082c6355f4c9bc7"
     },
     {
       "path": "data/15min/600362_江西铜业/600362_day_summary.csv",
-      "bytes": 5562,
-      "sha256": "31d0513cf78ca0e743e02008a9abd11d9a15321210569ab23af6718cf172d772"
+      "bytes": 5548,
+      "sha256": "97d06464f5ce15a8b9645245d5517fc9fb403530beb520042684fed499c62f8c"
     },
     {
       "path": "data/15min/600362_江西铜业/600362_异动预警.txt",
-      "bytes": 11366,
-      "sha256": "19753550c5545d63430c660e991d807f3f55d1f89732ef1eb83a37f1aecf3642"
+      "bytes": 11551,
+      "sha256": "aab6cacf3501206b903fb1acd9d36a3e3ad466be311f2f76f1acfdfcde592b02"
     },
     {
       "path": "data/15min/600362_江西铜业/成交量维度_操作指引.txt",
-      "bytes": 1865,
-      "sha256": "c43d2dfeeb2996aeaa1760bf5623c4e14d8a807b1708117bf6402d03835797d1"
+      "bytes": 1863,
+      "sha256": "7f81f2177f842ccb48b4ef4ca5755eb9d70fcc9cf0425e3ded3314dda210bb0b"
     },
     {
       "path": "data/15min/600398_海澜之家/600398_15min_raw.csv",
-      "bytes": 26850,
-      "sha256": "f99967a171f8e1c220d4ef70ecf6d0a469c0de68582f1735806d1e8ccec525e7"
+      "bytes": 26879,
+      "sha256": "a3d231a54a2669378b02edb1e3a6dd3d6ae77af0dc66b6646a869d0a7ab09756"
     },
     {
       "path": "data/15min/600398_海澜之家/600398_15min_分析报告.txt",
-      "bytes": 14021,
-      "sha256": "625fdbe85ab639bc2c33208e11dc9794dccda8e2e6106ebf4adeb49f43a0915e"
+      "bytes": 13732,
+      "sha256": "02c9ec08f799f5eb68ac9a674c2131ca27662336c3bdfb2e5e362170ac294c67"
     },
     {
       "path": "data/15min/600398_海澜之家/600398_day_summary.csv",
-      "bytes": 5326,
-      "sha256": "e81e8e6cac78fd755d5fbe48e8338d6304e02667928a076ea01aca6a2bf6c74e"
+      "bytes": 5319,
+      "sha256": "649da3621cc4e6cded297ec6fb89a4b4aaa99dc58b03033e9e7662976517bfbf"
     },
     {
       "path": "data/15min/600398_海澜之家/600398_异动预警.txt",
-      "bytes": 8835,
-      "sha256": "83dda3135f026762f7689ae012b7f544499514891df0c4747df5c5ff3868f4aa"
+      "bytes": 8583,
+      "sha256": "a078287bbcfa80e8282df306d404b1f8818e967fb0cd77b609a45da65dc255c4"
     },
     {
       "path": "data/15min/600398_海澜之家/成交量维度_操作指引.txt",
-      "bytes": 1864,
-      "sha256": "cda0f87cc8d35f8675057fa92839f64a874bd7ac721095214c18536d352283f3"
+      "bytes": 1866,
+      "sha256": "297be24ed26e1da023abee4604b121b18d05c84cbd2292c7f9b32af6b2f3875e"
     },
     {
       "path": "data/15min/600690_海尔智家/600690_15min_raw.csv",
-      "bytes": 28598,
-      "sha256": "d3e995eca72b1c487062deac3eba6c9623712df2b4c207f03414f605ffdb4a50"
+      "bytes": 28607,
+      "sha256": "fba5cdd34b70e6fbd34b775e1e65d7ebeaede63f08a78cf187b21eebea2624ad"
     },
     {
       "path": "data/15min/600690_海尔智家/600690_15min_分析报告.txt",
-      "bytes": 15083,
-      "sha256": "2fe2f9121338f087a2ace32d9ffae3b38220e97c3a612015e8905c9028aa9c25"
+      "bytes": 15975,
+      "sha256": "8ea2bb7851fe79b8b63280b64e690f20731e215a669733d9ead8e1f4fda3acf7"
     },
     {
       "path": "data/15min/600690_海尔智家/600690_day_summary.csv",
-      "bytes": 5491,
-      "sha256": "edce32865f1c6720ca85f7259e8bd6a702874aba497645d3f2a0d73635bacf42"
+      "bytes": 5495,
+      "sha256": "e80e04412d0fd2e0534b96249afcacdba6038f05fe2792f9d6f3ab1101da247c"
     },
     {
       "path": "data/15min/600690_海尔智家/600690_异动预警.txt",
-      "bytes": 10025,
-      "sha256": "205118a5fe1cf73d57b8880679cfd5a3ce55a3d23bcf49dfe28dfdbc7b3068ae"
+      "bytes": 10874,
+      "sha256": "831e0a7a13d55455a600e63775100531d831f33e9507e38c002011879ad58e46"
     },
     {
       "path": "data/15min/600690_海尔智家/成交量维度_操作指引.txt",
-      "bytes": 1862,
-      "sha256": "ab0979334b27f04532fb032f4093521bdd24dddd8598b8ed6d03980094e57584"
+      "bytes": 1861,
+      "sha256": "976737946bea48fe39d74c9fb8e69917894ac188e99377ec4967cf8d57bc3545"
     },
     {
       "path": "data/15min/600863_华能蒙电/600863_15min_raw.csv",
-      "bytes": 27210,
-      "sha256": "2504517e091bef99075384a08ba0efc20501922f50c732055e7f0b3dfd48f500"
+      "bytes": 27184,
+      "sha256": "c98fb6476842448936679b5ae7834b2f92d7e5af159302a5a1bd28c5e03bdc68"
     },
     {
       "path": "data/15min/600863_华能蒙电/600863_15min_分析报告.txt",
-      "bytes": 18260,
-      "sha256": "4a84f19caa09b17416671ad7e08f8c9d301ece28bf8d5fc439e83370bcf53533"
+      "bytes": 18382,
+      "sha256": "a0e67604761eeeeb393b43052baf3e3d1caa971611df2cc836d496a1f3aad743"
     },
     {
       "path": "data/15min/600863_华能蒙电/600863_day_summary.csv",
-      "bytes": 5536,
-      "sha256": "26dcb2eec36e37273be7f3ed48808e4563f97d4c0a414a22c537808686a15ecf"
+      "bytes": 5529,
+      "sha256": "84a862ccd6b426d7ce2743cc9b2c3ac3d772d72dd0aaae396419d6847f97edbe"
     },
     {
       "path": "data/15min/600863_华能蒙电/600863_异动预警.txt",
-      "bytes": 12888,
-      "sha256": "c00bc548c25962bcaec3a1cfd0e59bc375b9caac2de5bb6b2e6deb3028f220d6"
+      "bytes": 12989,
+      "sha256": "236555d1cebeddb74bec3b1eff9078cf0061364de4721efe6f692220c2c5cf7f"
     },
     {
       "path": "data/15min/600863_华能蒙电/成交量维度_操作指引.txt",
       "bytes": 1864,
-      "sha256": "6eca0a56f7ad1f2382e9377c36c121cdf974429901b5786ec7ad91b3dd336bd3"
+      "sha256": "d838e2be0704117ec044d1fd3051ece3bccc0a4e31884d60c7582317abccb4a0"
     },
     {
       "path": "data/15min/601138_工业富联/601138_15min_raw.csv",
-      "bytes": 29016,
-      "sha256": "f5766edc22f02f69d58c624986e0f2b1cfd456adfdd7ebad99de03845a74819f"
+      "bytes": 29011,
+      "sha256": "1c25f68663d897b53930d6adad137a2d894161c167a0905ded4caf4646d9fc4a"
     },
     {
       "path": "data/15min/601138_工业富联/601138_15min_分析报告.txt",
-      "bytes": 15090,
-      "sha256": "6972a2c60cc031cb73b28cc740d57b2b1ae579591c3c7741ba09235d1b6ee16d"
+      "bytes": 15699,
+      "sha256": "5470ee18ceba4a2036241ec1cca9a8cea88eca7da783dbbb6086bae320ceb626"
     },
     {
       "path": "data/15min/601138_工业富联/601138_day_summary.csv",
-      "bytes": 5885,
-      "sha256": "9e71e6fe457a5f99f714f0e1e41ce30fbc3c5e6ebbb83cbb2e5435b9d8a5d380"
+      "bytes": 5884,
+      "sha256": "fc34e05f5f617b0f2dabad98e14d8abf3887d132bad570535fc7f7619e19feec"
     },
     {
       "path": "data/15min/601138_工业富联/601138_异动预警.txt",
-      "bytes": 10008,
-      "sha256": "2de64d1c151d18e7dcab94436b65d9672a1d8e8092e462358177e8475630610e"
+      "bytes": 10612,
+      "sha256": "b443949909ca1291d43cdcbb2a3a2f4b1805c82f3a4be26fc9d86b42d30e4c8b"
     },
     {
       "path": "data/15min/601138_工业富联/成交量维度_操作指引.txt",
-      "bytes": 1863,
-      "sha256": "c778c373ca34a3e6449fa235f59375fd3acddbc3ce32c2d53e4ca2cc906d7aab"
+      "bytes": 1864,
+      "sha256": "551c3138ec015a92a6db6d242dc429564b99ff3f87f254df8dbb59248ce3b2a3"
     },
     {
       "path": "data/15min/601600_中国铝业/601600_15min_raw.csv",
-      "bytes": 27520,
-      "sha256": "198a0483c1c67dda5105a4d625bca2b382a93c298010e148b8eaba864267c894"
+      "bytes": 27507,
+      "sha256": "5f57afa8de75a94286f10a8c9b341b4898f890c1f6e6620b66a7fd05a2284194"
     },
     {
       "path": "data/15min/601600_中国铝业/601600_15min_分析报告.txt",
-      "bytes": 15452,
-      "sha256": "4cf687a2d4907800158c64033aa5f61144440f1c898e92ab4f6201ee60f3dd56"
+      "bytes": 15532,
+      "sha256": "04972ae8e0a2f3b76f8d4a2d3bba0d0eed7b3c30bdb391e6aa40a8b4d8383f55"
     },
     {
       "path": "data/15min/601600_中国铝业/601600_day_summary.csv",
-      "bytes": 5704,
-      "sha256": "c495c0be2ed79804b8775ecae43a2ba5585636c37ad747e940232afd06774bd7"
+      "bytes": 5691,
+      "sha256": "ce1b32b76ee8ebc7f346351e98525ded11730c3fc4e4101134103d4500b429c8"
     },
     {
       "path": "data/15min/601600_中国铝业/601600_异动预警.txt",
-      "bytes": 10234,
-      "sha256": "5d2bafd4041cdd17653ffa2069b78714ea1b49dbc8e9c57c1a6573fcddb0d46c"
+      "bytes": 10410,
+      "sha256": "02fe990e23e3505594587d50911ca3e88c333ba9bf4efe11c277ce34028ea16d"
     },
     {
       "path": "data/15min/601600_中国铝业/成交量维度_操作指引.txt",
-      "bytes": 1864,
-      "sha256": "83708039ad06ec88ef03536552f4bc00a49af484997bb1268746a9b346aa5938"
+      "bytes": 1867,
+      "sha256": "4a038cc30f4c4ef18518da0773cd0fb7e297b4193ae617ca1013f8ca343a89d9"
     },
     {
       "path": "data/15min/601899_紫金矿业/601899_15min_raw.csv",
-      "bytes": 29089,
-      "sha256": "7cd3fb77ac8bf9384ed11904484ca6b31bc06c5fdf66bb3d6cfd78c68c6af271"
+      "bytes": 29083,
+      "sha256": "48dbbc838ec298ab9993adbbedb7c2105f284cc140be7417e8c32f073569119d"
     },
     {
       "path": "data/15min/601899_紫金矿业/601899_15min_分析报告.txt",
-      "bytes": 16669,
-      "sha256": "32763edd31eb0645f25e2dcaf17830aea0d5093c44cc8b8011e3a2ebc61ab618"
+      "bytes": 16353,
+      "sha256": "367b547fafd590e13fa45b749b60516ffce63753b91e559c271804ae9fdd42df"
     },
     {
       "path": "data/15min/601899_紫金矿业/601899_day_summary.csv",
-      "bytes": 6010,
-      "sha256": "bf0c1bfc177e40047a8923e8704baa52aa706cde4e8213f61d9828045d8b4990"
+      "bytes": 6001,
+      "sha256": "763c612ad19dc4d919d291ff93883e3ba5fd34c43feec9a0c3e2c064a554e6ac"
     },
     {
       "path": "data/15min/601899_紫金矿业/601899_异动预警.txt",
-      "bytes": 11447,
-      "sha256": "13248eac59dfb7b8e4aa0e9b01d2af55e57ace9cd06dd443e830c5e9a2ebea52"
+      "bytes": 11196,
+      "sha256": "8e147aef408b0221d18b896b76c30ce7cb28a3c26871355bb9f2037f3d88606d"
     },
     {
       "path": "data/15min/601899_紫金矿业/成交量维度_操作指引.txt",
-      "bytes": 1866,
-      "sha256": "fda80c4ba6129a33d34fa26db5662370842c8916e3e39abf0b5e1c6064f88180"
+      "bytes": 1868,
+      "sha256": "b057f35dcb1e0a0273e5540193fb862780f774fe393756062e7ef3b22f09a83c"
     },
     {
       "path": "data/15min/601988_中国银行/601988_15min_raw.csv",
-      "bytes": 27487,
-      "sha256": "873d4695a1904a83d3c3f5e8348898456d0033bda1babbc496d222ca0adc4cc4"
+      "bytes": 27497,
+      "sha256": "1705393fb4fb4cb21fdc6433cbe12394ec54aa94d398db3be1fdd47b14af9676"
     },
     {
       "path": "data/15min/601988_中国银行/601988_15min_分析报告.txt",
-      "bytes": 12835,
-      "sha256": "f6a3d664a0fd011880eb2259d6e4032ce6fb84c86bb8b134d27c81f5b29b8ba3"
+      "bytes": 12396,
+      "sha256": "754661d5121d406fc5531198c7ae44f614e37c0816d21e3a275591ce5aa52b08"
     },
     {
       "path": "data/15min/601988_中国银行/601988_day_summary.csv",
-      "bytes": 5920,
-      "sha256": "da2aec82eacf0524e571a8567396e4bf8e978456607697ce86d566f5dca1f247"
+      "bytes": 5918,
+      "sha256": "7d11e15a15b1635e40540b19bdf8b3a07543b9af10334785f9eb74aa1897e8bb"
     },
     {
       "path": "data/15min/601988_中国银行/601988_异动预警.txt",
-      "bytes": 7584,
-      "sha256": "1a7c6fa44131c94881f3b73036ca55db21dc23093499a41532e35f512621c4f4"
+      "bytes": 7148,
+      "sha256": "d2ca2f2dc79630714ef89c31986850c2cddfe6b62911f3230d0896a428ac94f4"
     },
     {
       "path": "data/15min/601988_中国银行/成交量维度_操作指引.txt",
-      "bytes": 1869,
-      "sha256": "ae61b8e758a597bb1e44c16de2a4f8a02e1cb63ad1d11b79918d28b891c57954"
+      "bytes": 1870,
+      "sha256": "e06dcef6fe6d09fa5b1e38730f93d68978198a67ff094da073290c1a86d1eaa7"
     }
   ]
 }
