@@ -367,13 +367,17 @@ def refresh_em_metadata() -> tuple:
 
 
 def sync_test_anchors() -> dict:
-    """把 tests/test_data.py 的三个日期锚同步为当前数据口径（仅这三个锚，其余一概不动）。"""
+    """把 tests/test_data.py 的四个日期锚同步为当前数据口径（仅这四锚，其余一概不动）。"""
     p = ROOT / "tests" / "test_data.py"
     s = p.read_text(encoding="utf-8")
     old_head = re.search(r'assertEqual\("(\d{4}-\d{2}-\d{2})", target\[0\]\["date"\]\)', s).group(1)
     old_tail = re.search(r'assertEqual\("(\d{4}-\d{2}-\d{2})", target\[-1\]\["date"\]\)', s).group(1)
     old_wtail = re.search(r'assertEqual\("(\d{4}-\d{2}-\d{2})", warmup\[-1\]\["date"\]\)', s).group(1)
+    m = re.search(r'"(\d{4}-\d{2}-\d{2})" if stock\.code == "600863" else "(\d{4}-\d{2}-\d{2})"', s)
+    old_whead863, old_whead = m.group(1), m.group(2)
     new_head, new_tail, new_wtail = kline_head(), latest_kline_date(), warmup_tail()
+    new_whead = warmup_head("000651")
+    new_whead863 = warmup_head("600863")
     pairs = [(old_head, new_head, r'(assertEqual\(")\d{4}-\d{2}-\d{2}(", target\[0\]\["date"\]\))'),
              (old_tail, new_tail, r'(assertEqual\(")\d{4}-\d{2}-\d{2}(", target\[-1\]\["date"\]\))'),
              (old_wtail, new_wtail, r'(assertEqual\(")\d{4}-\d{2}-\d{2}(", warmup\[-1\]\["date"\]\))')]
@@ -383,9 +387,21 @@ def sync_test_anchors() -> dict:
         s2, nsub = re.subn(pat, r"\g<1>" + new + r"\g<2>", s, count=1)
         assert nsub == 1, f"锚替换失败 {old}->{new}"
         s = s2
+    if old_whead != new_whead or old_whead863 != new_whead863:
+        pat = r'"(\d{4}-\d{2}-\d{2})" if stock\.code == "600863" else "(\d{4}-\d{2}-\d{2})"'
+        repl = f'"{new_whead863}" if stock.code == "600863" else "{new_whead}"'
+        s2, nsub = re.subn(pat, repl, s, count=1)
+        assert nsub == 1, f"warmup 头锚替换失败"
+        s = s2
     p.write_text(s, encoding="utf-8", newline="")
     return {"kline_head": [old_head, new_head], "kline_tail": [old_tail, new_tail],
-            "warmup_tail": [old_wtail, new_wtail]}
+            "warmup_tail": [old_wtail, new_wtail],
+            "warmup_head": [old_whead, new_whead], "warmup_head_600863": [old_whead863, new_whead863]}
+
+
+def warmup_head(code: str) -> str:
+    f = next(EM_DIR.glob(f"{code}_*warmup_209d.csv"))
+    return read_csv_text(f)[1].splitlines()[1].split(",")[0]
 
 
 def run_engine(out_dir: Path) -> None:
