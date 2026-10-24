@@ -267,7 +267,7 @@ def analyze(code):
     box=sum(V[k] for k in range(n-60,n))
     out["turnover60_pct"]=round(box/1e4/shares*100,1) if shares else None
     out["net10"]=[{"d":d,"net":round(rows[at(d)]["wai"]-rows[at(d)]["nei"])} for d in ds[-10:]]
-    json.dump(out, open(f"/tmp/acc/{code}.json","w",encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(out, open(f"{os.environ.get('ACC_OUT_DIR','/tmp/acc')}/{code}.json","w",encoding="utf-8"), ensure_ascii=False, indent=1)
     # compact report
     s=out["snap"]; v1=out["v1"]; v2=out["v2"]; v3=out["v3"]; cn=out["conc"]
     print(f"\n===== {code} {name} 基准{out['basis']} =====")
@@ -291,7 +291,8 @@ def analyze(code):
     return out
 
 def main():
-    os.makedirs("/tmp/acc", exist_ok=True)
+    OUT = os.environ.get("ACC_OUT_DIR", "/tmp/acc")  # output dir overridable for automation (auto_run.py)
+    os.makedirs(OUT, exist_ok=True)
     codes = sys.argv[1:]
     if not codes:
         codes = sorted({f[:6] for f in os.listdir(DT) if f.endswith("_250d.txt")})

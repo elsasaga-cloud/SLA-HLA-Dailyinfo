@@ -141,3 +141,10 @@
 - 判定变化：格力 40（**减仓/不参与，信号兑现**）；海尔 55（对撞期：破位 vs 当日回购+OBV 背离）；顺丰 40（降半档）；海澜 45（纪律执行期）；五粮液 55/紫金 60/江铜 50/迈瑞 55/云铝 50/中铝 50/汇川 30/富联 30/华能 30/中行不适用。
 - 教训入库：①写 data CSV 一律 `encoding="utf-8", newline=""`（勿 sig）；②链滚后三重自检（窗口断言+daily_text+unittest）；③/tmp 易失，引擎备份不依赖；④kline250 数据行 11 列（p5=量手/p7=换手/p8=涨跌幅），表头仅 6 列名，解析按位置。
 - git：soft-replay（deletions=0 强制校验）→ commit+push。
+
+## T15_b 自动化脚手架（2026-10-24 16:10–16:20 前后，对话 34）
+
+- 用户需求：①确认交易日 ②每天收盘后 15:01 自动跑。交付 `scripts/auto_run.py`（纯标准库）+《自动化部署指南.md》+ run_auto.bat/cron 说明。
+- 设计分工（宪法 v1.2）：脚本=机械半场（交易日确认：周末闸门+EM 601988 当日 K 线探针（未就绪每 180s 重试×5）；日线 EM 镜像 beg/end 追加+warmup209/volume5 **combined 整体滑窗**（k 滑入=kline 滑出的头 k 行，杜绝 off-by-one）；15min 新浪 datalen=65 重叠校验+336 滚动；除权检测 |close−prev−chg|>0.011 打标；daily_text/analyzer/metadata/引擎/测试锚同步（仅 3 个日期锚正则替换）/unittest；失败自动回滚（.auto_backup 保留 3 份）；摘要 auto_digest.md+ROLLED.json；幂等）。判读半场仍归对话。
+- engine 打补丁：输出目录支持 env ACC_OUT_DIR（默认 /tmp/acc 不变，参数零改动）；.gitignore 增 .auto_backup/、auto_run.log。
+- 自检：--selftest OK；--check 2026-10-24（周六）→ 周末闸门跳过 exit 0；克隆+离线夹具（伪造 10-22）全流程演练+篡改回滚演练（见下一条记录）。
