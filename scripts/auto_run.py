@@ -208,9 +208,11 @@ def roll_daily(target: dt.date, corp_actions: dict) -> dict:
         klines = txt.splitlines()
         header, krows = klines[0], klines[1:]
         bom_w, wtxt = read_csv_text(f_w)
-        wrows = wtxt.splitlines()[1:]
+        wlines = wtxt.splitlines()
+        wheader, wrows = wlines[0], wlines[1:]
         bom_v, vtxt = read_csv_text(f_v)
-        vrows = vtxt.splitlines()[1:]
+        vlines = vtxt.splitlines()
+        vheader, vrows = vlines[0], vlines[1:]
         assert len(krows) == K and len(wrows) == W and len(vrows) == 5, f"{code} 现窗口长度异常"
         last = krows[-1].split(",")[0]
         fresh = em_klines(code, (dt.date.fromisoformat(last) - dt.timedelta(days=5)).isoformat(),
@@ -251,8 +253,8 @@ def roll_daily(target: dt.date, corp_actions: dict) -> dict:
         assert w2[-1].split(",")[0] < new_krows[0].split(",")[0], f"{code} warmup 尾与 kline 头重叠"
         assert v2[-1].split(",")[0] == w2[-1].split(",")[0], f"{code} volume5 尾与 warmup 尾不一致"
         write_csv(f_k, [header] + new_krows, bom_k)
-        write_csv(f_w, w2, bom_w)
-        write_csv(f_v, v2, bom_v)
+        write_csv(f_w, [wheader] + w2, bom_w)
+        write_csv(f_v, [vheader] + v2, bom_v)
         summary[code] = {"name": name, "added": dates,
                          "kline": f"{new_krows[0].split(',')[0]}..{new_krows[-1].split(',')[0]}",
                          "warmup_tail": w2[-1].split(",")[0], "vol5_head": v2[0].split(",")[0]}
