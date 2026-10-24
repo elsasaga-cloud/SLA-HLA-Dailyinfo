@@ -1,0 +1,362 @@
+{
+  "run": 1,
+  "run_ts": "2026-10-16T10:45:00+08:00",
+  "data_basis": "2026-10-15",
+  "code": "000858",
+  "price": {
+    "close": 71.3,
+    "chg_pct": 0.68,
+    "open": 70.66,
+    "high": 71.9,
+    "low": 70.4,
+    "vol_wangu": 2905,
+    "amt_yi": 20.68,
+    "liangbi": 1.65,
+    "huanshou_pct": 0.75,
+    "nei_wanshou": 13.82,
+    "wai_wanshou": 15.23,
+    "range_5d_pct": 1.08
+  },
+  "ma": {
+    "MA5": 70.61,
+    "MA10": 70.08,
+    "MA20": 70.05,
+    "MA30": 70.51,
+    "MA40": 71.06,
+    "MA50": 72.11,
+    "MA60": 72.52,
+    "MA70": 72.57,
+    "MA80": 72.91,
+    "MA90": 73.75,
+    "slope_1d": {
+      "MA5": 0.15,
+      "MA10": 0.03,
+      "MA20": -0.04,
+      "MA30": -0.02,
+      "MA40": -0.11,
+      "MA50": -0.08,
+      "MA60": -0.04,
+      "MA70": -0.05,
+      "MA80": -0.11,
+      "MA90": -0.14
+    },
+    "gap_pct": {
+      "MA5": 0.98,
+      "MA10": 1.74,
+      "MA20": 1.78,
+      "MA30": 1.12,
+      "MA40": 0.34,
+      "MA50": -1.12,
+      "MA60": -1.68,
+      "MA70": -1.75,
+      "MA80": -2.21,
+      "MA90": -3.32
+    }
+  },
+  "chips": {
+    "avgcost": 74.97,
+    "profit_pct": 19.72,
+    "conc90": 20.39,
+    "conc70": 17.18,
+    "b70": [
+      70.69,
+      100.02
+    ],
+    "b90": [
+      69.78,
+      105.52
+    ],
+    "penetration_pct": 2.08,
+    "premium_pct": -4.9,
+    "structure": "double-peak: 70-73 new peak + ~100 legacy trapped peak",
+    "avgcost_drop_0709_to_1015": -25.91,
+    "exdiv_part": -2.58,
+    "turnover_part": -23.33
+  },
+  "framework": {
+    "easy_mode": "TRASH",
+    "sanfenfa": "short-bear-no-touch",
+    "state": 1,
+    "state_prev": {
+      "2026-10-12": 1,
+      "2026-10-13": 0,
+      "2026-10-14": 1
+    },
+    "signal": "SELL",
+    "slope_score": 20,
+    "gap_score": 100,
+    "total_score": 44,
+    "gs": 60,
+    "p_diff": 4,
+    "watch_levels": [
+      72.6,
+      73.6
+    ]
+  },
+  "aei": {
+    "sum5d": 7.32,
+    "sum5d_series": {
+      "2026-10-09": 4.75,
+      "2026-10-12": 7.62,
+      "2026-10-13": 7.66,
+      "2026-10-14": 6.48,
+      "2026-10-15": 7.32
+    },
+    "last_day": 0.84,
+    "ema3": 1.052,
+    "max_20d": 3.667,
+    "max_20d_date": "2026-09-04",
+    "mean_20d": 0.795,
+    "power_source": "profit-repair-dominant (dC contributed once: 09-21)"
+  },
+  "ta_battery": {
+    "obv_divergence": true,
+    "obv_1015": -81410,
+    "obv_slope20_per_day": 161,
+    "ad_15d_delta": 2710,
+    "cmf20": -0.021,
+    "cmf20_0930": -0.148,
+    "mfi14": 75.7,
+    "rsi14": 54.2,
+    "rsi_divergence": {
+      "price_0709": 70.9,
+      "rsi_0709": 24.9,
+      "price_0929": 68.77,
+      "rsi_0929": 34.7
+    },
+    "kdj": [
+      76.8,
+      67.7,
+      95.0
+    ],
+    "macd_daily": {
+      "dif": -0.241,
+      "dea": -0.537,
+      "hist": 0.592
+    },
+    "macd_weekly": {
+      "dif": -6.274,
+      "dea": -7.26,
+      "hist": 1.973
+    },
+    "boll_width_pct": 3.83,
+    "boll_width_pctile_250d": 2,
+    "boll_pctB": 96.5,
+    "vp_70_73_pct": 45,
+    "vp_poc": 75,
+    "vp_value_area": [
+      70,
+      75
+    ],
+    "wyckoff_spring_date": "2026-09-29",
+    "wyckoff_spring_quality": "medium",
+    "rs_alpha_pp_windows": {
+      "0709": 23.8,
+      "0716": 14.9,
+      "0827": 16.1,
+      "0915": 13.4,
+      "0929": 12.1
+    },
+    "index_szse_0709_to_1015_pct": -23.3,
+    "wly_0709_to_1015_pct": 0.6,
+    "box_turnover_pct": 43,
+    "vol_20d_daily_wangu": 1682,
+    "ext_active_days_last10": 7,
+    "net_main_last10_wangu": 276
+  },
+  "hard_disclosure": {
+    "households": {
+      "2025-12-31": 681426,
+      "2026-03-31": 676701,
+      "2026-06-30": 714632,
+      "q2_change_pct": 5.61
+    },
+    "margin_yi": {
+      "2026-07-02": 60.6,
+      "2026-09-03": 60.07,
+      "2026-09-30": 56.54,
+      "2026-10-09": 56.47,
+      "chg_3m_pct": -6.8
+    },
+    "buyback": {
+      "plan_yi": [
+        80,
+        100
+      ],
+      "done_yi_by_0930": 12.01,
+      "progress_pct": 12.15,
+      "shares_wan": 1612.78
+    },
+    "northbound_h1_pct": 1.75,
+    "pe_ttm": 21,
+    "pe_field_em_dynamic": "DISCARDED(8.58 stale)",
+    "dividend_yield_actual_pct": 3.6
+  },
+  "verdict": {
+    "accumulating_confirmed": false,
+    "phase_pct": "40-50",
+    "stage": "base-building-late / early-central (stages 1-3 done, stage-4 concentration unconfirmed)",
+    "buy_nature": "support-style absorption (buyback+dividend+defensive), not control-style accumulation",
+    "falsifiers_passed": "0/5",
+    "confirm_switch": "2026-10-28 Q3 report household count",
+    "framework_verdicts": {
+      "easy_mode": "TRASH",
+      "state": 1,
+      "signal": "SELL",
+      "total_score": 44
+    },
+    "todo": [
+      "大宗交易明细",
+      "龙虎榜",
+      "Level-2/ETF 无数据源已声明"
+    ],
+    "scorecard_final": {
+      "tech_check": 21,
+      "tech_tri": 6,
+      "hard_disclosure_x": 2,
+      "aux_score_norm": 88
+    },
+    "operation_mapping": "hold-watch / no entry; await 10-28 households + volume close above 72.6"
+  },
+  "battery_v2": {
+    "adx14": 14.2,
+    "pdi": 26.6,
+    "ndi": 17.2,
+    "cci20": 144,
+    "wr14": 18.6,
+    "roc12_pct": 1.47,
+    "sar": 69.1,
+    "sar_flip_date": "2026-10-09",
+    "donchian20": [
+      68.68,
+      71.9
+    ],
+    "donchian_pos_pct": 81,
+    "psy12": 58,
+    "ar26": 132,
+    "br26": 92,
+    "vr26": 98,
+    "pvt_slope20": 2,
+    "emv14": 1,
+    "trix15_pct": -0.113,
+    "fib_retrace_done_pct": 4.8,
+    "fib_levels": {
+      "23.6": 81.49,
+      "38.2": 89.41,
+      "50": 95.82,
+      "61.8": 102.23
+    },
+    "gaps_unfilled_above": [
+      [
+        "2026-04-17",
+        -1.7
+      ],
+      [
+        "2026-04-29",
+        -2.0
+      ],
+      [
+        "2026-05-06",
+        -6.4
+      ],
+      [
+        "2026-08-17",
+        -1.8
+      ]
+    ],
+    "vwap20": 70.15,
+    "w52_pos_pct": 5,
+    "vol20_ann_pct": 13,
+    "vol20_pctile": 14,
+    "vol20d_pctile": 52,
+    "price_vol_corr_20d": 0.6,
+    "env_quartet": {
+      "w52_pos": 5,
+      "vol_pctile": 14,
+      "adx": 14.2,
+      "boll_width_pctile": 2
+    },
+    "score_add": {
+      "check": 9,
+      "tri": 4,
+      "neutral": 2
+    }
+  },
+  "aux_stream": {
+    "run_ts": "2026-10-16T11:00:00+08:00",
+    "aux_score_raw": 12.5,
+    "aux_score_wsum": 15.5,
+    "aux_score_norm": 88,
+    "s2_batch_price": {
+      "pentai_low_7m": 730,
+      "bai_rong_0806": 745,
+      "bai_rong_0813": 775,
+      "sep_range": [
+        770,
+        800
+      ],
+      "jinrijiujia_aug": 830,
+      "terminal_min": 800,
+      "freshness": "2026-09-27",
+      "next_check": "10-28 前后"
+    },
+    "s3": {
+      "terminal_inventory_months": "<2 (历史低位)",
+      "mid_autumn": {
+        "maotai_pct": 20,
+        "wly_shandong_henan": "double-digit",
+        "industry_pct": -10
+      }
+    },
+    "s1": {
+      "jiujiu_rectify": 1,
+      "consumption_tax": -1
+    },
+    "s4": {
+      "buyback_slow": -1,
+      "dividend_actual": 1,
+      "lhb_inst_netsell_warn": -0.5,
+      "lhb_date_unverified": true
+    },
+    "s5": {
+      "narrative_reversal": 1,
+      "trust_crisis_overhang": -1
+    },
+    "trigger": {
+      "batch_price_fail_below": 770,
+      "household_switch": "2026-10-28"
+    },
+    "s4_resolved": {
+      "lhb_warning": "RESOLVED: 2026-01-29 limit-up-day distribution data, irrelevant now; no LHB in last 8.5 months",
+      "block_trades": {
+        "total_3m_to_0709_yi": 4.66,
+        "detail_0518": {
+          "yi": 1.9,
+          "discount_pct": -6.45,
+          "buyer": "机构专用"
+        },
+        "detail_0709": {
+          "wan": 202,
+          "discount_pct": 0,
+          "buyer": "机构专用"
+        },
+        "since_mid_july": "none reported, recheck Run#2"
+      }
+    }
+  },
+  "battery_v3": {
+    "hurst_full250": 0.547,
+    "hurst_base60d": 0.559,
+    "hurst_rolling": {
+      "2026-04-02": 0.619,
+      "2026-05-06": 0.574,
+      "2026-06-03": 0.643,
+      "2026-07-02": 0.444,
+      "2026-07-30": 0.581,
+      "2026-08-27": 0.451,
+      "2026-09-24": 0.527
+    },
+    "verdict": "order-returning, below strong-control 0.6",
+    "method_count_scored": 34
+  }
+}

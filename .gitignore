@@ -1,2 +1,4 @@
 __pycache__/
 *.py[cod]
+.auto_backup/
+auto_run.log

@@ -1,0 +1,65 @@
+name: 每日自动数据链
+
+on:
+  schedule:
+    # GitHub Actions cron 使用 UTC；07:01 UTC = 北京/香港/新加坡时间 15:01。
+    # GitHub 定时触发可能有数分钟延迟；脚本内部含收盘数据等待与重试，非交易日自动跳过。
+    - cron: "1 7 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "目标交易日 YYYY-MM-DD（留空=北京时间今天）"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-data-roll
+  cancel-in-progress: false
+
+jobs:
+  roll:
+    name: 交易日确认 → 数据滚动 → 校验 → 引擎 → 提交推送
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    env:
+      TZ: Asia/Shanghai
+
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 配置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 配置 git 身份
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: 运行自动数据链（数据未就绪时每 10 分钟重试，最多 3 次）
+        env:
+          TARGET_DATE: ${{ inputs.date }}
+        run: |
+          set +e
+          for i in 1 2 3; do
+            python scripts/auto_run.py --push ${TARGET_DATE:+--date "$TARGET_DATE"}
+            rc=$?
+            if [ "$rc" -eq 0 ]; then
+              exit 0
+            fi
+            if [ "$rc" -ne 5 ]; then
+              exit "$rc"
+            fi
+            echo "数据未就绪（退出码 5），10 分钟后重试（$i/3）"
+            sleep 600
+          done
+          exit 5
+
+      - name: 完成
+        if: success()
+        run: echo "::notice::数据链完成。判读半场（检索/结论链/六件套/台账）在 Arena 对话输入「跑」继续。"

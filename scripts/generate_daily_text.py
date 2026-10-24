@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the requested 90-session Chinese daily quote text files.
+"""Generate the requested 250-session Chinese daily quote text files.
 
 Daily market data comes from the checked-in EastMoney unadjusted K-lines.  The
 chip calculation is a Python port of EastMoney's CYQ browser algorithm (the
@@ -122,7 +122,13 @@ STOCKS = (
         floating_shares=5_522_009_474,
         book_value_per_share=41.63 / 1.53,
         profit_bases=(ProfitBasis("0000-00-00", 24_340_972_964.28),),
-        actions=(),
+        actions=(
+            CorporateAction(
+                "2026-08-27",
+                2.00,
+                "现金分红除权；历史价格在该日及以后计算技术指标时前复权 2.00 元",
+            ),
+        ),
     ),
     Stock(
         code="300124",
@@ -158,7 +164,13 @@ STOCKS = (
         floating_shares=1_210_662_145,
         book_value_per_share=158.49 / 4.98,
         profit_bases=(ProfitBasis("0000-00-00", 9_318_684_707.38),),
-        actions=(),
+        actions=(
+            CorporateAction(
+                "2026-09-08",
+                1.33,
+                "现金分红除权；历史价格在该日及以后计算技术指标时前复权 1.33 元",
+            ),
+        ),
     ),
     Stock(
         code="002352",
@@ -497,9 +509,9 @@ def render_block(
 
 def generate(stock: Stock) -> Path:
     warmup = read_rows(DATA / f"{stock.stem}_chip_warmup_209d.csv")
-    requested = read_rows(DATA / f"{stock.stem}_kline_90d.csv")
+    requested = read_rows(DATA / f"{stock.stem}_kline_250d.csv")
     rows = checked_concat((warmup, requested))
-    if (len(warmup), len(requested)) != (209, 90):
+    if (len(warmup), len(requested)) != (209, 250):
         raise ValueError(f"unexpected source row counts for {stock.code}")
 
     volume_seed = read_rows(DATA / f"{stock.stem}_volume_warmup_5d.csv")
@@ -513,11 +525,11 @@ def generate(stock: Stock) -> Path:
         render_block(stock, rows, index, start, volumes)
         for index in range(start, len(rows))
     ]
-    if len(blocks) != 90:
-        raise AssertionError("output must contain exactly 90 daily blocks")
+    if len(blocks) != 250:
+        raise AssertionError("output must contain exactly 250 daily blocks")
 
     OUTPUT.mkdir(parents=True, exist_ok=True)
-    destination = OUTPUT / f"{stock.stem}_90d.txt"
+    destination = OUTPUT / f"{stock.stem}_250d.txt"
     destination.write_text("\n\n\n".join(blocks) + "\n", encoding="utf-8")
     return destination
 
