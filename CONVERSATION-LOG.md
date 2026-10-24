@@ -156,3 +156,4 @@
 - 动作：①`git fetch --unshallow` 后 merge origin/main——冲突全部在 data/15min（71 文件），整目录取 main 版本（15min→10-23，sessions=21 窗口 09-17..10-23），eastmoney 保持 10-21，unittest 9/9 ✓（merge=b5c2863）；②`.github/workflows/update-15min.yml` 升级为《每日自动数据链》：cron `1 7 * * 1-5`（北京 15:01）+ workflow_dispatch（可填日期）→ checkout/setup-python/git 身份（github-actions[bot]）→ `auto_run.py --push`（exit 5 未就绪时每 10 分钟重试×3；非交易日绿跳过；失败回滚+红叉）→ GITHUB_TOKEN 免密推送；③《自动化部署指南.md》改写为 Actions 版（激活=合并 PR 一步）；④60 天不活动 GitHub 会暂停 schedule 的提醒入指南。
 - 效果：合并 PR 后 main 的日线（10-21 起）将由 workflow 多日补滚追赶，15min 从 10-23 续滚；旧单项 bot 被同一文件替代，无双 bot 竞争。判读半场仍归对话（「跑」=读 ROLLED.json 不重复滚动）。
 - 待办：用户合并 PR（或回复「合并」由 agent 执行 gh pr merge）；合并后可在 Actions 页 Run workflow 手动试跑。
+- 权限边界（重要）：Arena GitHub App 无 workflows 权限——push 含 `.github/workflows/` 改动会被远端拒（"refusing to allow a GitHub App to create or update workflow"）。处理：分支还原 workflow 原文；新 YAML 以普通文件 `自动化/workflow-每日自动数据链.yml` 入库+指南第七节网页粘贴步骤；由用户网页编辑（用户身份有权限）。
