@@ -486,7 +486,9 @@ def git_commit_push(date_iso: str, push: bool, note: str) -> dict:
         return subprocess.run(["git", *a], cwd=str(ROOT), capture_output=True, text=True)
     _g("add", "-A")
     c = _g("commit", "-m", f"auto data roll {date_iso}: {note} (auto_run)")
-    sha = c.stdout.strip().split("\n")[0] if c.returncode == 0 else "nothing-to-commit"
+    sha = c.stdout.strip().split("\n")[0] if c.returncode == 0 else "commit-failed"
+    if c.returncode != 0:
+        log(f"git commit 失败: {c.stderr.strip()[:300]}（多为未配置 git 身份：git config --global user.name/user.email）")
     pushed = False
     if push and c.returncode == 0:
         br = _g("rev-parse", "--abbrev-ref", "HEAD").stdout.strip()
