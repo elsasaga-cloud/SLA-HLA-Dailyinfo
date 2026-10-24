@@ -149,3 +149,10 @@
 - engine 打补丁：输出目录支持 env ACC_OUT_DIR（默认 /tmp/acc 不变，参数零改动）；.gitignore 增 .auto_backup/、auto_run.log。
 - 自检：--selftest OK；--check 2026-10-24（周六）→ 周末闸门跳过 exit 0；克隆+离线夹具（伪造 10-22）全流程演练+篡改回滚演练（见下一条记录）。
 - 演练结果（克隆+伪造 10-22 离线夹具，commit 8e78237 版）：正例全链 exit 0——kline 250 行 2025-10-13..2026-10-22、warmup 209 行 2024-11-28..2025-10-10（表头保留）、vol5 5 行 09-26..10-10、锚同步 5 项（含 600863 头 11-15→11-18 周五跳周一）、unittest 9/9、auto commit 83eb550、树干净、幂等重跑跳过；负例（篡改 10-21 10:00 重叠根）→ 精确捕获「15min OHLC 不一致」→ exit 3 → 数据/测试完整回滚（kline 尾仍 10-21）。演练捕获并修复 3 bug：warmup/vol5 回写丢表头、测试锚漏第 4 锚（warmup 头双日期）、git 身份缺失致 commit 静默失败（现输出 stderr+指南补前提）。
+
+## T15_c GitHub Actions 全管线自动化（2026-10-24 16:30–16:50 前后，对话 35）
+
+- 用户纠正：自动化=GitHub Actions workflow（云端），非本地 python/cron。调查发现：仓库原有 `.github/workflows/update-15min.yml`（15:01 bot，仅滚 15min，提交「Update 15-minute data through X」）；main 被 bot 独立推进至 15min@10-23（71 文件），且 main 无任何会话成果（0 吸筹库、无 engine/auto_run、eastmoney 停在 08-24）；另有用户上传的 `2026.10.16 五粮液/` 照片目录。
+- 动作：①`git fetch --unshallow` 后 merge origin/main——冲突全部在 data/15min（71 文件），整目录取 main 版本（15min→10-23，sessions=21 窗口 09-17..10-23），eastmoney 保持 10-21，unittest 9/9 ✓（merge=b5c2863）；②`.github/workflows/update-15min.yml` 升级为《每日自动数据链》：cron `1 7 * * 1-5`（北京 15:01）+ workflow_dispatch（可填日期）→ checkout/setup-python/git 身份（github-actions[bot]）→ `auto_run.py --push`（exit 5 未就绪时每 10 分钟重试×3；非交易日绿跳过；失败回滚+红叉）→ GITHUB_TOKEN 免密推送；③《自动化部署指南.md》改写为 Actions 版（激活=合并 PR 一步）；④60 天不活动 GitHub 会暂停 schedule 的提醒入指南。
+- 效果：合并 PR 后 main 的日线（10-21 起）将由 workflow 多日补滚追赶，15min 从 10-23 续滚；旧单项 bot 被同一文件替代，无双 bot 竞争。判读半场仍归对话（「跑」=读 ROLLED.json 不重复滚动）。
+- 待办：用户合并 PR（或回复「合并」由 agent 执行 gh pr merge）；合并后可在 Actions 页 Run workflow 手动试跑。
