@@ -148,3 +148,4 @@
 - 设计分工（宪法 v1.2）：脚本=机械半场（交易日确认：周末闸门+EM 601988 当日 K 线探针（未就绪每 180s 重试×5）；日线 EM 镜像 beg/end 追加+warmup209/volume5 **combined 整体滑窗**（k 滑入=kline 滑出的头 k 行，杜绝 off-by-one）；15min 新浪 datalen=65 重叠校验+336 滚动；除权检测 |close−prev−chg|>0.011 打标；daily_text/analyzer/metadata/引擎/测试锚同步（仅 3 个日期锚正则替换）/unittest；失败自动回滚（.auto_backup 保留 3 份）；摘要 auto_digest.md+ROLLED.json；幂等）。判读半场仍归对话。
 - engine 打补丁：输出目录支持 env ACC_OUT_DIR（默认 /tmp/acc 不变，参数零改动）；.gitignore 增 .auto_backup/、auto_run.log。
 - 自检：--selftest OK；--check 2026-10-24（周六）→ 周末闸门跳过 exit 0；克隆+离线夹具（伪造 10-22）全流程演练+篡改回滚演练（见下一条记录）。
+- 演练结果（克隆+伪造 10-22 离线夹具，commit 8e78237 版）：正例全链 exit 0——kline 250 行 2025-10-13..2026-10-22、warmup 209 行 2024-11-28..2025-10-10（表头保留）、vol5 5 行 09-26..10-10、锚同步 5 项（含 600863 头 11-15→11-18 周五跳周一）、unittest 9/9、auto commit 83eb550、树干净、幂等重跑跳过；负例（篡改 10-21 10:00 重叠根）→ 精确捕获「15min OHLC 不一致」→ exit 3 → 数据/测试完整回滚（kline 尾仍 10-21）。演练捕获并修复 3 bug：warmup/vol5 回写丢表头、测试锚漏第 4 锚（warmup 头双日期）、git 身份缺失致 commit 静默失败（现输出 stderr+指南补前提）。
